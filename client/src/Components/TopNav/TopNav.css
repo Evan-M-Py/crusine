@@ -1,0 +1,143 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.topNav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #556b80;
+}
+
+.logo {
+  color: #61dafb;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+}
+
+.navLinks li {
+  list-style: none;
+}
+
+.navLinks a {
+  color: #61dafb;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #61dafb;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+  .navLinks {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+
+  .navLinks {
+    position: absolute;
+    right: 0px;
+    height: 92vh;
+    top: 8vh;
+    background-color: #556b80;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in;
+  }
+
+  .burger {
+    display: block;
+  }
+}
+
+.nav-active {
+  transform: translateX(0%);
+  transition: transform 0.5s ease-in;
+}
+
+.navLinkFade1 {
+  opacity: 0;
+  transition: opacity 0.5s 0.6s;
+}
+
+.navLinkFade2 {
+  opacity: 0;
+  transition: opacity 0.5s 0.8s;
+}
+
+.navLinkFade3 {
+  opacity: 0;
+  transition: opacity 0.5s 1s;
+}
+
+.navLinkFade4 {
+  opacity: 0;
+  transition: opacity 0.5s 1.2s;
+}
+
+.navLinkFade1.toggled {
+  opacity: 1;
+}
+
+.navLinkFade2.toggled {
+  opacity: 1;
+}
+
+.navLinkFade3.toggled {
+  opacity: 1;
+}
+
+.navLinkFade4.toggled {
+  opacity: 1;
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.toggle.line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle.line2 {
+  opacity: 0;
+}
+
+.toggle.line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
