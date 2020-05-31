@@ -48,7 +48,7 @@ const selectRowProp = {
           headerAlign="left"
           width="175"
         >
-          Catagory
+          Category
           </TableHeaderColumn>
         <TableHeaderColumn 
           dataField='itemName'
