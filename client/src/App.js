@@ -47,7 +47,7 @@ const App = (props) => {
 
                 <Route exact path="/signup" component={SignupPage} >
                     {/* <SignupPage userID={props.userID} /> */}
-                    <SignupPage handleChange={handleContextChange}/>
+                    <SignupPage handleContextChange={handleContextChange}/>
                 </Route>
 
 

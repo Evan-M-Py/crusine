@@ -21,7 +21,7 @@ module.exports = function (app) {
                 }).then(truck => {
                 // This sends back the new user and truck data as an object
                 // Now we can save this in state
-                console.log(user.dataValues.id);
+                console.log(truck);
                 return res.json({user, truck});
             })
         })
