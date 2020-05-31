@@ -13,13 +13,13 @@ const  InventoryTableDisplay = (props) => {
  }
 
  function customConfirm(next, dropRowKeys) {
-  // const dropRowKeysStr = dropRowKeys.join(',')
-  console.log(dropRowKeys);
-  const dbObj = dropRowKeys[0]
-  // console.log(dropRowKeysStr);
-    Axios.delete('/api/inventory/' + dbObj).then((res) => {
-      next();
-      })
+    for (let i = 0; i < dropRowKeys.length; i++) {
+    const dbObj = dropRowKeys[i]
+    // console.log(dropRowKeysStr);
+      Axios.delete('/api/inventory/' + dbObj).then((res) => {
+        next();
+        })
+      }
     };
 
 const selectRowProp = {
