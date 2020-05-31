@@ -160,7 +160,7 @@ const Dashboard = (props) => {
                 width: '40vw'
             },
             todo: {
-                margin: '75vw',
+                
                 width: '50vw'
             },
             button: {
@@ -170,36 +170,44 @@ const Dashboard = (props) => {
             },
             font: {
                 textAlign: 'center'
+            },
+            container: {
+                margin: '3rem'
             }
         }
 
 
         return (
-            <div>
+            <div style={style.container}>
 
                 <Container>
+                    <Row className='justify-content-center'>
 
-                    <Row>
+                        <Col>
+                            <Row>
+                                <div style={style.wrapper}>
 
-                        <div style={style.wrapper}>
+                                        <div style={style.graphs} >
+                                            <h2 style={style.font}>Inventory Breakdown</h2>
+                                            <PieChart graphData={pieChartData} />
+                                        </div>
+                                        <div style={style.graphs} >
+                                            <h2 style={style.font}>Expenses Breakdown</h2>
+                                            <BarGraph graphData={barGraphData} />
+                                        </div>
 
-                                <div style={style.graphs} >
-                                    <h2 style={style.font}>Inventory Breakdown</h2>
-                                    <PieChart graphData={pieChartData} />
                                 </div>
-                                <div style={style.graphs} >
-                                    <h2 style={style.font}>Expenses Breakdown</h2>
-                                    <BarGraph graphData={barGraphData} />
-                                </div>
+                            </Row>
 
-                        </div>
 
-                    </Row>
+                            <Row>
+                                <Col md={{ span: 10, offset: 4 }}>
+                                    <ContainerForTodos style={style.todo}/>
+                                </Col>
+                            </Row>
 
-                    <Row>
-                    
-                        <ContainerForTodos style={style.todo}/>
-                    
+                        </Col>
+
                     </Row>
             
                 </Container>

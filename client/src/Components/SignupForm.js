@@ -34,10 +34,6 @@ const SignupPage = (props) => {
     };
 
 
-    // if(loginStatus){
-    //     return <Redirect to='/dashboard'  />
-    // } else
-
     return (
         
             <div className="login">

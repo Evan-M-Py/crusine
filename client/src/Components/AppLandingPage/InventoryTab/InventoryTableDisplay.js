@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import Axios from 'axios';
 
 const  InventoryTableDisplay = (props) => {
 
@@ -11,11 +12,29 @@ const  InventoryTableDisplay = (props) => {
      }
  }
 
+ function customConfirm(next, dropRowKeys) {
+  // const dropRowKeysStr = dropRowKeys.join(',')
+  console.log(dropRowKeys);
+  const dbObj = dropRowKeys[0]
+  // console.log(dropRowKeysStr);
+    Axios.delete('/api/inventory/' + dbObj).then((res) => {
+      next();
+      })
+    };
+
+const selectRowProp = {
+  mode: 'checkbox'
+};
+
+ const options = {
+  handleConfirmDeleteRow: customConfirm
+};
+
   return (
     <div>
-      <BootstrapTable data={props.data}>
+      <BootstrapTable deleteRow={ true } selectRow={ selectRowProp } data={props.data} options={options}>
         <TableHeaderColumn 
-          isKey
+          isKey='true'
           dataField='id'
           dataAlign='center'
           headerAlign="left"

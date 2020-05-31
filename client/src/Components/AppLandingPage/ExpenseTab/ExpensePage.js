@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Container } from 'react-bootstrap';
+import { Row, Container, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ExpenseDisplayTable from './ExpenseTableDisplay';
 import axios from "axios";
@@ -37,19 +37,75 @@ function ExpensePage( props ) {
 
     useEffect(() => {
       expenseTableAJAX()
-  }, [count])
+  }, [count]);
+
+
+  const style = {
+        
+    tableStyle: {
+        width: '50rem'
+    },
+    
+    graphSize: {
+        margin: '3px',
+        marginLeft: '2rem',
+        height: '25rem',
+        width: '35rem',
+        background: 'blue'
+    },
+
+    container: {
+        marginTop: '2rem'
+    }
+
+}
+
 
   return (
-     <Container>
+    <>
+      <Container style={style.container}>
         <Row>
-        <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
+
+          <Col>
+
+            <Row>
+
+              <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
+
+            </Row>
+
+            <Row>
+
+              <ExpenseDisplayTable style={style.tableStyle} data={expDisplay} />
+
+            </Row>
+
+          </Col>
+
+          <Col>
+            <Row>
+
+              <Col>
+                <div style={style.graphSize}>
+
+                </div>
+              </Col>
+
+              <Col>
+                <div style={style.graphSize}>
+
+                </div>
+              </Col>
+
+            </Row>
+
+          </Col>
+
         </Row>
 
-        <Row>
-           <ExpenseDisplayTable data={expDisplay}  /> 
-        </Row>    
-    </Container>
+      </Container>
+    </>
   )
-}
+};
 
 export default ExpensePage;

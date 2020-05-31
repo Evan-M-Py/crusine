@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Container } from 'react-bootstrap';
+import { Row, Container, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InventoryDisplayTable from './InventoryTableDisplay';
 import axios from "axios";
@@ -38,16 +38,65 @@ function InventoryPage(props) {
     }, [count])
 
 
+    const style = {
+        
+        tableStyle: {
+            width: '100rem'
+        },
+        
+        graphSize: {
+            margin: '3px',
+            marginLeft: '2rem',
+            height: '25rem',
+            width: '35rem',
+            background: 'blue'
+        },
+
+        container: {
+            marginTop: '2rem'
+        }
+
+    }
+
     return (
-        <Container>
+    <> 
+        <Container style={style.container}>
             <Row>
-                <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
+
+                <Col md='6'>
+                    <Row>
+                        <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
+                    </Row>
+
+                    <Row >
+                        <InventoryDisplayTable style={style.tableStyle} data={invDisplay}  />
+                    </Row>
+                </Col>
+
+                <Col md='6'>
+                    <Row>
+
+                        <Col>
+                        <div style={style.graphSize}>
+
+                        </div>
+                        </Col>
+
+                        <Col>
+                        <div style={style.graphSize}>
+
+                        </div>
+                        </Col>
+
+                    </Row>
+
+                </Col>
+
+
             </Row>
 
-            <Row>
-                <InventoryDisplayTable data={invDisplay}  />
-            </Row>
         </Container>
+    </>   
     )
 }
 

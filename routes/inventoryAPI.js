@@ -24,4 +24,16 @@ module.exports = function (app) {
         });
     });
 
+
+    app.delete("/api/inventory/:inventoryID", function (req, res) {
+        console.log("DELETE ROUTE HIT");
+        console.log(req.params.inventoryID)
+        db.Inventory.destroy({
+            where: {
+                id: req.params.inventoryID
+            }
+        }).then(function (crusine_db) {
+            res.json(crusine_db);
+        });
+    });
 };
