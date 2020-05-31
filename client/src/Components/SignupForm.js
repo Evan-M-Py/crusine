@@ -25,8 +25,9 @@ const SignupPage = (props) => {
     axios.post('/api/createuser', data).then((res) => {
         console.log(res)
         console.log('stops here')
+        const truckId = res.data.truck.id
+        props.handleContextChange( truckId )
         setLoginStatus(true);
-
     })
         
        
