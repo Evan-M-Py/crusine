@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "blk9990",
+    "password": "root",
     "database": "crusine_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
