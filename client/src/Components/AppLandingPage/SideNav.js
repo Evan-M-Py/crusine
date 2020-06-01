@@ -8,6 +8,7 @@ import InventoryIcon from '../../icons/inventory.png';
 import LogoutIcon from '../../icons/logout.png'
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
+import Axios from 'axios';
 
 function SideNav() {
     const style = {
@@ -24,6 +25,12 @@ function SideNav() {
             height: '80px'
         }
     }
+    const logoutFunction = (props) => {
+        Axios.get('/logout').then(
+            props.history.push("/")
+        );
+        props.handleContextChange();
+    };
     const selectPage = () => {
     };
     return (
@@ -51,7 +58,7 @@ function SideNav() {
                     <span>Expenses</span>
                 </ReactTooltip>
 
-                <Link to='#' data-tip data-for="logoutTooltip">
+                <Link onClick={logoutFunction} data-tip data-for="logoutTooltip">
                     <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} />
                 </Link>
                 <ReactTooltip id="logoutTooltip">
