@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Wrapper from '../wrapper';
 import SectionSelectorButton from './SectionSelectorButton';
@@ -10,7 +11,7 @@ import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Axios from 'axios';
 
-function SideNav() {
+const SideNav = (props) => {
     const style = {
         navStyle: {
             height: '100vh',
@@ -25,48 +26,56 @@ function SideNav() {
             height: '80px'
         }
     }
-    const logoutFunction = (props) => {
+
+    const [loginStatus, setLoginStatus] = useState(false);
+
+    const logoutFunction = () => {
         Axios.get('/logout').then(
-            props.history.push("/")
+            setLoginStatus(true)
         );
         props.handleContextChange();
     };
+
     const selectPage = () => {
     };
-    return (
-        <Wrapper inside={(
-            <div style={style.navStyle}>
-                
-                <Link to='/dashboard' data-tip data-for="dashboardTooltip">
-                    <SectionSelectorButton id="dashboardButton" select={selectPage} buttonImg={DashIcon} sectionName='Dashboard' style={style.buttonStyle} />
-                </Link>
-                <ReactTooltip id="dashboardTooltip">
-                    <span>Dashboard</span>
-                </ReactTooltip>
-                
-                <Link to='/inventory' data-tip data-for="inventoryTooltip">
-                    <SectionSelectorButton select={selectPage} buttonImg={InventoryIcon} sectionName='Inventory' style={style.buttonStyle} />
-                </Link>
-                <ReactTooltip id="inventoryTooltip">
-                    <span>Inventory</span>
-                </ReactTooltip>
-                
-                <Link to='/expenses' data-tip data-for="expensesTooltip">
-                    <SectionSelectorButton select={selectPage} buttonImg={ExpensesIcon} sectionName='Expenses' style={style.buttonStyle} />
-                </Link>
-                <ReactTooltip id="expensesTooltip">
-                    <span>Expenses</span>
-                </ReactTooltip>
 
-                <Link onClick={logoutFunction} data-tip data-for="logoutTooltip">
-                    <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} />
-                </Link>
-                <ReactTooltip id="logoutTooltip">
-                    <span>Log Out</span>
-                </ReactTooltip>
-            
-            </div>
-        )} />
-    )
+    if (loginStatus) {
+        return <Redirect to='/' />
+    } else
+        return (
+            <Wrapper inside={(
+                <div style={style.navStyle}>
+
+                    <Link to='/dashboard' data-tip data-for="dashboardTooltip">
+                        <SectionSelectorButton id="dashboardButton" select={selectPage} buttonImg={DashIcon} sectionName='Dashboard' style={style.buttonStyle} />
+                    </Link>
+                    <ReactTooltip id="dashboardTooltip">
+                        <span>Dashboard</span>
+                    </ReactTooltip>
+
+                    <Link to='/inventory' data-tip data-for="inventoryTooltip">
+                        <SectionSelectorButton select={selectPage} buttonImg={InventoryIcon} sectionName='Inventory' style={style.buttonStyle} />
+                    </Link>
+                    <ReactTooltip id="inventoryTooltip">
+                        <span>Inventory</span>
+                    </ReactTooltip>
+
+                    <Link to='/expenses' data-tip data-for="expensesTooltip">
+                        <SectionSelectorButton select={selectPage} buttonImg={ExpensesIcon} sectionName='Expenses' style={style.buttonStyle} />
+                    </Link>
+                    <ReactTooltip id="expensesTooltip">
+                        <span>Expenses</span>
+                    </ReactTooltip>
+
+                    <Link onClick={() => logoutFunction()} data-tip data-for="logoutTooltip">
+                        <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} />
+                    </Link>
+                    <ReactTooltip id="logoutTooltip">
+                        <span>Log Out</span>
+                    </ReactTooltip>
+
+                </div>
+            )} />
+        )
 }
 export default SideNav;
