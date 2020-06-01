@@ -97,9 +97,9 @@ function ExpenseInsert(props) {
             </Row>
             <Row>
                 <p style={style.itemLabel}>Cost: $</p>
-                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' ></Input>
+                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6}></Input>
                 <p>.</p>
-                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' ></Input>
+                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2}></Input>
 
                 <Button variant='primary' size='sm' style={style.button} onClick={() => props.expenseInsertAjax(expObj)}>Submit Item to Inventory</Button>
             </Row>
