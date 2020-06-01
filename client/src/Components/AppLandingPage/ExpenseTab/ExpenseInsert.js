@@ -10,31 +10,51 @@ const categoryOptions = ['Kitchen-Appliances', 'Tools', 'Vehicle', 'FOH', 'MISC'
 
 function ExpenseInsert(props) {
 
-    const [text, setText] = useState({
-        expense: '',
-        quantity: '',
-        cost: ''
-
+    const [expense, setExpense] = useState({
+        expense: ''
     });
-
+    const [dollars, setDollars] = useState({
+        dollars: ''
+    });
+    const [cents, setCents] = useState({
+        cents: ''
+    });
     const [category, setCategory] = useState(categoryOptions[0]);
+
+
+    let formattedPrice = `${dollars.dollars}.${cents.cents}`;
+
 
 
     const handleInputChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
 
-        setText((prevState) => ({
-            ...prevState, [name]: value
-        })
-        )
+        if (name === 'expense') {
+            setExpense({
+                expense: value
+            });
+        };
+
+        if (name === 'dollarPrice') {
+            setDollars({
+                dollars: value
+            });
+        };
+
+        if (name === 'centPrice') {
+            setCents({
+                cents: value
+            });
+        };
+
     };
 
     const expObj = {
-        ...text,
+        expense: expense.expense,
         category,
-    }
-
+        cost: formattedPrice,
+    };
 
     const style = {
         container: {
@@ -72,12 +92,15 @@ function ExpenseInsert(props) {
         <Container style={style.container}>
             <Row>
                 <p style={style.itemLabel}>Expense:</p>
-                <Input style={style.inputStyle} placeholder='enter expense name' inputLabel='Item Name' handleInputChange={handleInputChange} name='expense' value={text.expense} />
+                <Input style={style.inputStyle} placeholder='enter expense name' inputLabel='Item Name' handleInputChange={handleInputChange} name='expense' value={expense.expense} />
                 <DropdownBase buttonLabel={'select expense category'} style={style.dropdownStyle} handleDropdownChange={setCategory} name='category' value={category} options={categoryOptions} />
             </Row>
             <Row>
                 <p style={style.itemLabel}>Cost: $</p>
-                <Input style={style.inputCostStyle} placeholder='0000.00' handleInputChange={handleInputChange} name='cost' ></Input>
+                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' ></Input>
+                <p>.</p>
+                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' ></Input>
+
                 <Button variant='primary' size='sm' style={style.button} onClick={() => props.expenseInsertAjax(expObj)}>Submit Item to Inventory</Button>
             </Row>
         </Container>

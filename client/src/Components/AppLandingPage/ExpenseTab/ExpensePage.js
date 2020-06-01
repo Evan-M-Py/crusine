@@ -6,106 +6,106 @@ import axios from "axios";
 import ButtonForExpenseComponent from "./InsertExpenseButton"
 
 
-function ExpensePage( props ) {
+function ExpensePage(props) {
 
     const [expDisplay, setExpDisplay] = useState([{}]);
 
     const [count, setCount] = useState(0);
 
     const expenseInsertAJAX = (thing) => {
-      
-      const expObj = {
-        expense: thing.expense,
-        price: thing.cost,
-        category: thing.category,
-        TruckId:  Number(props.userID)
-      }
+        // console.log('expense insert route hit');
+        const expObj = {
+            expense: thing.expense,
+            price: thing.cost,
+            category: thing.category,
+            TruckId: Number(props.userID)
+        }
 
-      axios.post("/api/expense/create", expObj).then((res) => {
-        setCount(count +1)
-      });
-      
+        axios.post("/api/expense/create", expObj).then((res) => {
+            setCount(count + 1)
+        });
 
-  };
+
+    };
 
     const expenseTableAJAX = () => {
         return axios.get("/api/expense/" + props.userID).then((res) => {
-        setExpDisplay(res.data);
-     });
+            setExpDisplay(res.data);
+        });
     }
 
 
     useEffect(() => {
-      expenseTableAJAX()
-  }, [count]);
+        expenseTableAJAX()
+    }, [count]);
 
 
-  const style = {
-        
-    tableStyle: {
-        width: '50rem'
-    },
-    
-    graphSize: {
-        margin: '3px',
-        marginLeft: '2rem',
-        height: '25rem',
-        width: '35rem',
-        background: 'blue'
-    },
+    const style = {
 
-    container: {
-        marginTop: '2rem'
+        tableStyle: {
+            width: '50rem'
+        },
+
+        graphSize: {
+            margin: '3px',
+            marginLeft: '2rem',
+            height: '25rem',
+            width: '35rem',
+            background: 'blue'
+        },
+
+        container: {
+            marginTop: '2rem'
+        }
+
     }
 
-}
 
+    return (
+        <>
+            <Container style={style.container}>
+                <Row>
 
-  return (
-    <>
-      <Container style={style.container}>
-        <Row>
+                    <Col>
 
-          <Col>
+                        <Row>
 
-            <Row>
+                            <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
 
-              <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
+                        </Row>
 
-            </Row>
+                        <Row>
 
-            <Row>
+                            <ExpenseDisplayTable style={style.tableStyle} data={expDisplay} />
 
-              <ExpenseDisplayTable style={style.tableStyle} data={expDisplay} />
+                        </Row>
 
-            </Row>
+                    </Col>
 
-          </Col>
+                    <Col>
+                        <Row>
 
-          <Col>
-            <Row>
+                            <Col>
+                                <div style={style.graphSize}>
 
-              <Col>
-                <div style={style.graphSize}>
+                                </div>
+                            </Col>
 
-                </div>
-              </Col>
+                            <Col>
+                                <div style={style.graphSize}>
 
-              <Col>
-                <div style={style.graphSize}>
+                                </div>
+                            </Col>
 
-                </div>
-              </Col>
+                        </Row>
 
-            </Row>
+                    </Col>
 
-          </Col>
+                </Row>
 
-        </Row>
-
-      </Container>
-    </>
-  )
+            </Container>
+        </>
+    )
 };
 
 export default ExpensePage;
