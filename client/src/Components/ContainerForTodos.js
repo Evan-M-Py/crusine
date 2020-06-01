@@ -175,7 +175,7 @@ const ContainerForTodos = (props) => {
     }
 
     return (
-        <div id="container" className="card col-11">
+        <div id="container" className="card col-11" style={{background: '#283B63', color: '#F2EFE7'}}>
             <Title />
             <Form addTodo={addTodo} />
             <List todos={state.data} remove={removeTodo} />

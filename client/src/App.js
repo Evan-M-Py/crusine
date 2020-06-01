@@ -24,7 +24,8 @@ const App = (props) => {
 
     const style = {
         parentDiv: {
-            display: "flex"
+            display: "flex",
+            background: '#F2EFE7'
         }
     };
 

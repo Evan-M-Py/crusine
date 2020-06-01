@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 const TopNav = (props) => {
 
     return (
-        <nav className="topNav">
+        <nav className="topNav" style={{backgroundColor: '#283B63'}}>
 
             <div className="brand">
                 <Brand />

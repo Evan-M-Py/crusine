@@ -64,14 +64,15 @@ body {
 }
 
 .teal {
-    color: #5dbcd2;
+    color: #9379AC;
 
 }
 
 .jumbotron {
-    background-color: #556b80;
+    background-color: #283B63;
     opacity: 0.96;
     box-shadow: 3px 10px 10px 3px rgba(0,0,0,0.3);
+    color: #F2EFE7;
 }
 
 body {
@@ -80,6 +81,7 @@ body {
 }
 
 .landing-btn {
-    background-color: #5dbcd2;
-    border: 1px solid #5dbcd2;
+    background-color: #9379AC;
+    border: 1px solid #9379AC;
+    color: #F2EFE7;
 }   

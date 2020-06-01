@@ -43,42 +43,42 @@ const SignupPage = (props) => {
                         <form >
                             <Row>
                                 <Col>
-                                    <label htmlFor='firstName'>first name: </label>
-                                    <input type="text" name="firstName" ref={register({ required: true, minLength: 2 })} />
+                                    <label htmlFor='firstName'>First Name: </label>
+                                    <input className="form-control" type="text" name="firstName" ref={register({ required: true, minLength: 2 })} />
                                 </Col>
                                 <Col>
-                                    <label htmlFor='lastName'>last name:</label>
-                                    <input type="text" name="lastName" ref={register({ required: true, minLength: 2 })} />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <label htmlFor='email'>email:</label>
-                                    <input type="text" name="email" ref={register({ required: true, minLength: 5 })} />
-                                </Col>
-                                <Col>
-                                    <label htmlFor='phonenumber'>phone number:</label>
-                                    <input type="text" name="phoneNumber" ref={register({ required: true, minLength: 10, maxLength: 10 })} />
+                                    <label htmlFor='lastName'>Last Name:</label>
+                                    <input className="form-control" type="text" name="lastName" ref={register({ required: true, minLength: 2 })} />
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                    <label htmlFor='username'>username:</label>
-                                    <input type="text" name="username" ref={register({ required: true, minLength: 6 })} />
+                                    <label htmlFor='email'>Email:</label>
+                                    <input className="form-control" type="text" name="email" ref={register({ required: true, minLength: 5 })} />
                                 </Col>
                                 <Col>
-                                    <label htmlFor='password'>password:</label>
-                                    <input type="text" name="password" ref={register({ required: true, minLength: 8 })} />
+                                    <label htmlFor='phonenumber'>Phone Number:</label>
+                                    <input className="form-control" type="text" name="phoneNumber" ref={register({ required: true, minLength: 10, maxLength: 10 })} />
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <label htmlFor='username'>Username:</label>
+                                    <input className="form-control" type="text" name="username" ref={register({ required: true, minLength: 6 })} />
+                                </Col>
+                                <Col>
+                                    <label htmlFor='password'>Password:</label>
+                                    <input className="form-control" type="text" name="password" ref={register({ required: true, minLength: 8 })} />
                                 </Col>
                             </Row>
                             <Row className="justify-content-center">
                                 <Col className="col-6">
-                                    <label htmlFor="truckName">truck name:</label>
-                                    <input type="text" name="truckName" ref={register({ required: true, minLength: 5 })} />
+                                    <label className="mt-2" htmlFor="truckName">Truck Name:</label>
+                                    <input className="form-control" type="text" name="truckName" ref={register({ required: true, minLength: 5 })} />
                                 </Col>
                             </Row>
                             <Row className="justify-content-center">
-                                <button onClick={handleSubmit(onSubmit)} type="submit">submit</button>
+                                <button className="btn landing-btn teal mt-4" onClick={handleSubmit(onSubmit)} type="submit">Submit</button>
                             </Row>
                             <Row className="justify-content-center">
                                 <a className="mt-3 teal" href="/">
