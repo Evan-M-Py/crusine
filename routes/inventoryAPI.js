@@ -40,17 +40,17 @@ module.exports = function (app) {
     //         });
     // });
 
-    // // PUT route for UPDATING using parameters
-    // app.put("/api/inventory/:id", function (req, res) {
-    //     console.log("UPDATE ROUTE HIT");
-    //     db.Post.update({
-    //         where: {
-    //             id: req.params.inventoryID
-    //         }
-    //     }).then(function (crusine_db) {
-    //         res.json(crusine_db);
-    //     });
-    // });
+    // PUT route for UPDATING using parameters
+    app.put("/api/inventory/:id", function (req, res) {
+        console.log("UPDATE ROUTE HIT");
+        db.Post.update({
+            where: {
+                id: req.params.inventoryID
+            }
+        }).then(function (crusine_db) {
+            res.json(crusine_db);
+        });
+    });
 
     // DELETE route for DELETING
     app.delete("/api/inventory/:inventoryID", function (req, res) {
