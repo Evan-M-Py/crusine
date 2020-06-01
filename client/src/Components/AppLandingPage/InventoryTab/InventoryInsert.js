@@ -105,9 +105,9 @@ function InventoryInsert(props) {
             </Row>
             <Row>
                 <p style={style.itemLabel}>Price: $</p>
-                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' ></Input>
+                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6}></Input>
                 <p>.</p>
-                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' ></Input>
+                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2} ></Input>
                 <Button variant='primary' size='sm' style={style.button} onClick={() => props.inventoryAjaxPost(invObj)}>Submit Item to Inventory</Button>
             </Row>
         </Container>

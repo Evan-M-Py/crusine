@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         price: {
-            type: DataTypes.DECIMAL(6, 2),
+            type: DataTypes.STRING,
             allowNull: false
         },
         category: {

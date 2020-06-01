@@ -13,7 +13,7 @@ function ExpensePage(props) {
     const [count, setCount] = useState(0);
 
     const expenseInsertAJAX = (thing) => {
-        // console.log('expense insert route hit');
+        console.log('expense insert route hit');
         const expObj = {
             expense: thing.expense,
             price: thing.cost,
