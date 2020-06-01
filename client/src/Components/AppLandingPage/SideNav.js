@@ -14,14 +14,15 @@ import Axios from 'axios';
 const SideNav = (props) => {
     const style = {
         navStyle: {
-            height: '100vh',
+            height: '900px',
             width: '75px',
-            backgroundColor: 'lightGrey',
+            backgroundColor: '#283B63',
             margin: '0',
-            borderRadius: '0px, 6px, 6px, 0px'
+            borderRadius: '0px, 6px, 6px, 0px',
+            padding: '0px 5px 0px 5px'
         },
         buttonStyle: {
-            marginTop: '30px',
+            margin: '10px 0 10px 0',
             width: '80px',
             height: '80px'
         }
@@ -44,31 +45,35 @@ const SideNav = (props) => {
     } else
         return (
             <Wrapper inside={(
-                <div style={style.navStyle}>
+                <div style={style.navStyle} className="justify-content-center">
 
                     <Link to='/dashboard' data-tip data-for="dashboardTooltip">
-                        <SectionSelectorButton id="dashboardButton" select={selectPage} buttonImg={DashIcon} sectionName='Dashboard' style={style.buttonStyle} />
+                        {/* <SectionSelectorButton id="dashboardButton" select={selectPage} buttonImg={DashIcon} sectionName='Dashboard' style={style.buttonStyle} /> */}
+                        <i class="fas fa-chart-pie fa-4x my-4" style={{color: '#F2EFE7', text: "center"}}></i>
                     </Link>
                     <ReactTooltip id="dashboardTooltip">
                         <span>Dashboard</span>
                     </ReactTooltip>
 
                     <Link to='/inventory' data-tip data-for="inventoryTooltip">
-                        <SectionSelectorButton select={selectPage} buttonImg={InventoryIcon} sectionName='Inventory' style={style.buttonStyle} />
+                        {/* <SectionSelectorButton select={selectPage} buttonImg={InventoryIcon} sectionName='Inventory' style={style.buttonStyle} /> */}
+                        <i class="fas fa-list fa-4x my-4" style={{color: '#F2EFE7', text: "center"}}></i>
                     </Link>
                     <ReactTooltip id="inventoryTooltip">
                         <span>Inventory</span>
                     </ReactTooltip>
 
                     <Link to='/expenses' data-tip data-for="expensesTooltip">
-                        <SectionSelectorButton select={selectPage} buttonImg={ExpensesIcon} sectionName='Expenses' style={style.buttonStyle} />
+                        {/* <SectionSelectorButton select={selectPage} buttonImg={ExpensesIcon} sectionName='Expenses' style={style.buttonStyle} /> */}
+                        <i class="fas fa-receipt fa-4x my-4 ml-2" style={{color: '#F2EFE7', text: "center"}}></i>
                     </Link>
                     <ReactTooltip id="expensesTooltip">
                         <span>Expenses</span>
                     </ReactTooltip>
 
                     <Link onClick={() => logoutFunction()} data-tip data-for="logoutTooltip">
-                        <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} />
+                        {/* <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} /> */}
+                        <i class="fas fa-sign-out-alt fa-4x my-4 ml-1" style={{color: '#F2EFE7', text: "center"}}></i>
                     </Link>
                     <ReactTooltip id="logoutTooltip">
                         <span>Log Out</span>
