@@ -19,4 +19,30 @@ module.exports = function (app) {
             res.json(crusine_db);
         });
     });
+
+    app.delete("/api/expenseDel/:expenseID", function (req, res) {
+        console.log("DELETE ROUTE HIT");
+        console.log(req.params.expenseID)
+        db.Expense.destroy({
+            where: {
+                id: req.params.expenseID
+            }
+        }).then(function (crusine_db) {
+            res.json(crusine_db);
+        });
+    });
+
+    app.put("/api/expense/", function(req, res) {
+        console.log("UPDATE ROUTE HIT");
+        console.log(req.body)
+        db.Expense.update(
+            req.body,
+            {
+            where: {
+                id: req.body.id
+            }
+          }).then(function(crusine_db) {
+          res.json(crusine_db);
+        });
+      });
 }

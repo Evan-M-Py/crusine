@@ -1,16 +1,10 @@
-
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BootstrapTable from 'react-bootstrap-table-next';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import cellEditFactory from 'react-bootstrap-table2-editor';
+import { BootstrapTable } from 'react-bootstrap-table-next';
 import { Row, Container, Col, Modal, Button } from 'react-bootstrap';
 import Axios from 'axios';
-import { Route } from 'react-router-dom';
-import { DBCLICK_TO_CELL_EDIT } from 'react-bootstrap-table2-editor/lib/src/const';
 
-const InventoryTableDisplay = (props) => {
-
+const  InventoryTableDisplay = (props) => {
 
 
   const [show, setShow] = useState(false);
@@ -39,27 +33,6 @@ const InventoryTableDisplay = (props) => {
 
 //===================================================================================================================================================
 
-      //function customConfirm(next, dropRowKeys) {
-       // for (let i = 0; i < dropRowKeys.length; i++) {
-            //const dbObj = dropRowKeys[i]
-            // console.log(dropRowKeysStr);
-           //Axios.delete('/api/inventory/' + dbObj).then((res) => {
-                //next();
-            //})
-        //}
-  //  };
-  
-  
-const [ updateTarget, setUpdateTarget ] = useState('')
-
-
-const updateAxios = (x) => {
-
-  Axios.put("/api/inventory/", x ).then((res) => {
-    console.log("completed")
-  })
-};
-
 const columns = [
   { dataField: 'id', text: 'Id' },
   { dataField: 'category', text: 'Category' },
@@ -69,28 +42,12 @@ const columns = [
   { dataField: 'price', text: 'Price' },
 ]
 
-const cellEdit = cellEditFactory({
-  mode: 'click',
-  onStartEdit: (row, column, rowIndex, columnIndex) => { setUpdateTarget(row) },
-  beforeSaveCell(oldValue, newValue, row, column, done) {
-    
-
-    setTimeout(() => {
-      if (window.confirm('Do you want to accep this change?')) {
-        
-        done(); // contine to save the changes
-        updateAxios(row)
-      } else {
-        done(false); // reject the changes
-      }
-    }, 0);
-    return { async: true };
+const cellEdit = {
   
-
+  beforeSaveCell: (oldValue, newValue, row, column) => { 
+    console.log(newValue);
   }
-});
-const tableData = [...props.data]
-
+}
   return (
     <div>
 
@@ -109,7 +66,7 @@ const tableData = [...props.data]
         </Modal.Footer>
       </Modal>
 
-      <BootstrapTable columns={ columns } keyField='id' cellEdit={ cellEdit }  data={props.data} />
+      <BootstrapTable keyField='id' cellEdit={ cellEditProp } deleteRow={ true } selectRow={ selectRowProp } data={props.data} scrollTop={ 'Bottom' } options={options}/>
 
     </div>
   )
