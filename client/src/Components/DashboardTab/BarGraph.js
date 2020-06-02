@@ -33,19 +33,29 @@ function BarGraph(props) {
                     'rgba(255,99,132,1)'
                 ],
                 data: props.graphData,
+
             }
         ]
     };
 
+    const options = {
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    // min: 0
+                }
+            }]
+        }
+    }
     return (
         <div className='chart'>
             <Bar
                 data={barGraphData}
                 width={500}
                 height={450}
-                options={{
-                    maintainAspectRatio: false
-                }}
+                options={options}
             />
         </div>
     );
