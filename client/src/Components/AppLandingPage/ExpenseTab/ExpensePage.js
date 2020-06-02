@@ -37,28 +37,27 @@ function ExpensePage(props) {
 
     useEffect(() => {
 
-      expenseTableAJAX()
-  }, [count]);
+        expenseTableAJAX()
+    }, [count]);
 
 
-  const style = {
-        
-    tableStyle: {
-        width: '50rem'
-    },
-    
-    graphSize: {
-      margin: '3px',
-      marginTop: '2rem',
-      height: '30rem',
-      width: '85rem',
-      background: 'blue'
-    },
+    const style = {
 
-    container: {
-        marginTop: '2rem'
-    }
+        tableStyle: {
+            width: '50rem'
+        },
 
+        graphSize: {
+            margin: '3px',
+            marginTop: '2rem',
+            height: '30rem',
+            width: '85rem',
+            background: 'blue'
+        },
+
+        container: {
+            marginTop: '2rem'
+        },
 
         tableStyle: {
             width: '50rem'
@@ -83,27 +82,13 @@ function ExpensePage(props) {
         <>
             <Container style={style.container}>
                 <Row>
+                    <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
+                    <ExpenseDisplayTable style={style.tableStyle} data={expDisplay} />
+                </Row>
 
-
-              <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
-
-              <ExpenseDisplayTable style={style.tableStyle} data={expDisplay} />
-
-
-                        </Row>
-
-
-            <Row>
-
-                <div style={style.graphSize}>
-
-                </div>
-
-
-
-                        </Row>
-
-
+                <Row>
+                    <div style={style.graphSize}></div>
+                </Row>
 
             </Container>
         </>
