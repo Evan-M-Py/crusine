@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
-  }
+}
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -33,7 +33,7 @@ require("./routes/userAPI")(app);
 require("./routes/truckAPI")(app);
 require("./routes/chartAPI")(app);
 
-app.get('*', function(req,res){
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, "/client/build/index.html"));
 })
 
@@ -43,8 +43,6 @@ app.get('*', function(req,res){
 
 db.sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, function () {
-
-
         console.log(`Listening on port ${PORT}`)
     });
 }); 

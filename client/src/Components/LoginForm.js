@@ -56,19 +56,19 @@ function LoginPage(props) {
                                         <Col>
                                             
                                             <label>Username</label>
-                                            <input onChange={(e) => handleInputChange(e)} type='text' name="username" placeholder="Enter your username"/>
+                                            <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="username" placeholder="Enter your username"/>
                                             
                                         </Col>
                                         <Col>
                                             
-                                                <label>Password</label>
-                                                <input onChange={(e) => handleInputChange(e)} type='text' name="password" placeholder="Enter your password"/>
+                                                <label className='mr-2'>Password</label>
+                                                <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="password" placeholder="Enter your password"/>
                                             
                                         </Col>
                                     </Row>
                                     <Row className="justify-content-center">
                                         <button
-                                            className="landing-btn col-4 mt-3"
+                                            className="landing-btn col-4 mt-4 btn"
                                             variant="primary"
                                             type="submit"
                                         >

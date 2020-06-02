@@ -142,6 +142,7 @@ const Dashboard = (props) => {
         const style = {
             main: {
                 marginBottom: '200px'
+                
             },
             wrapper: {
                 display: 'flex',
@@ -154,7 +155,8 @@ const Dashboard = (props) => {
                 display: 'flex',
                 height: '80%',
                 margin: '0',
-                padding: '0'
+                padding: '0',
+                background: '#F2EFE7'
             },
             graphs: {
                 marginBottom: '75px',
@@ -173,7 +175,7 @@ const Dashboard = (props) => {
                 textAlign: 'center'
             },
             container: {
-                margin: '3rem'
+                background: '#F2EFE7'
             }
         }
 
@@ -181,7 +183,7 @@ const Dashboard = (props) => {
         return (
             <div style={style.container}>
 
-                <Container>
+                <Container style={{background: '#F2EFE7'}}>
                     <Row className='justify-content-center'>
 
                         <Col>

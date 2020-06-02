@@ -12,18 +12,38 @@ function InventoryInsert(props) {
 
     const [text, setText] = useState({
         itemName: '',
-        quantity: '',
-        price: ''
+        quantity: ''
+    });
 
+    const [dollars, setDollars] = useState({
+        dollars: ''
+    });
+
+    const [cents, setCents] = useState({
+        cents: ''
     });
 
     const [category, setCategory] = useState(categoryOptions[0]);
     const [unit, setUnit] = useState(quantityOptions[0]);
 
+    let formattedPrice = `${dollars.dollars}.${cents.cents}`;
+    // console.log(formattedPrice);
 
     const handleInputChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
+
+        if (name === 'dollarPrice') {
+            setDollars({
+                dollars: value
+            });
+        }
+
+        if (name === 'centPrice') {
+            setCents({
+                cents: value
+            });
+        }
 
         setText((prevState) => ({
             ...prevState, [name]: value
@@ -34,7 +54,8 @@ function InventoryInsert(props) {
     const invObj = {
         ...text,
         category: category,
-        unit: unit
+        unit: unit,
+        price: formattedPrice
     }
 
 
@@ -84,7 +105,9 @@ function InventoryInsert(props) {
             </Row>
             <Row>
                 <p style={style.itemLabel}>Price: $</p>
-                <Input style={style.inputCostStyle} placeholder='0000.00' handleInputChange={(e) => handleInputChange(e)} name='price' ></Input>
+                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6}></Input>
+                <p>.</p>
+                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2} ></Input>
                 <Button variant='primary' size='sm' style={style.button} onClick={() => props.inventoryAjaxPost(invObj)}>Submit Item to Inventory</Button>
             </Row>
         </Container>
