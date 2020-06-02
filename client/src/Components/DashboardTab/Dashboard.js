@@ -42,6 +42,7 @@ const Dashboard = (props) => {
 
     const pieChartAjax = () => {
         return axios.all([getProduce(), getBread(), getDairy(), getMeat(), getSpices(), getNonParish()]).then(axios.spread(function (prod, bread, dairy, meat, spices, nonPar) {
+            console.log(prod.data[0].price)
             const pieChartData = [prod.data.length, bread.data.length, dairy.data.length, meat.data.length, spices.data.length, nonPar.data.length];
             setPieChartData(pieChartData);
         })

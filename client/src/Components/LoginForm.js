@@ -43,7 +43,7 @@ function LoginPage(props) {
         });
     }
         if(loginStatus){
-            return <Redirect to='/dashboard'  />
+            return <Redirect to='/dashboard'/>
         } else
         return (
             <div  className="login">
