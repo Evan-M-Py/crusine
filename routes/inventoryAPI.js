@@ -25,7 +25,7 @@ module.exports = function (app) {
     });
 
 
-    app.delete("/api/inventory/:inventoryID", function (req, res) {
+    app.delete("/api/inventoryDel/:inventoryID", function (req, res) {
         console.log("DELETE ROUTE HIT");
         console.log(req.params.inventoryID)
         db.Inventory.destroy({
@@ -36,4 +36,20 @@ module.exports = function (app) {
             res.json(crusine_db);
         });
     });
+
+
+    app.put("/api/inventory/", function(req, res) {
+        console.log("UPDATE ROUTE HIT");
+        console.log(req.body)
+        db.Inventory.update(
+            req.body,
+            {
+            where: {
+                id: req.body.id
+            }
+          }).then(function(crusine_db) {
+          res.json(crusine_db);
+        });
+      });
+
 };

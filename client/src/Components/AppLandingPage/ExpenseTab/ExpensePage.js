@@ -47,11 +47,11 @@ function ExpensePage( props ) {
     },
     
     graphSize: {
-        margin: '3px',
-        marginLeft: '2rem',
-        height: '25rem',
-        width: '35rem',
-        background: 'blue'
+      margin: '3px',
+      marginTop: '2rem',
+      height: '30rem',
+      width: '85rem',
+      background: 'blue'
     },
 
     container: {
@@ -66,42 +66,26 @@ function ExpensePage( props ) {
       <Container style={style.container}>
         <Row>
 
-          <Col>
-
-            <Row>
-
               <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
-
-            </Row>
-
-            <Row>
 
               <ExpenseDisplayTable style={style.tableStyle} data={expDisplay} />
 
             </Row>
 
-          </Col>
 
-          <Col>
+
             <Row>
 
-              <Col>
                 <div style={style.graphSize}>
 
                 </div>
-              </Col>
 
-              <Col>
-                <div style={style.graphSize}>
 
-                </div>
-              </Col>
+
 
             </Row>
 
-          </Col>
 
-        </Row>
 
       </Container>
     </>
