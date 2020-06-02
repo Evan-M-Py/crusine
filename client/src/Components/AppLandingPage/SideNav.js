@@ -14,7 +14,7 @@ import Axios from 'axios';
 const SideNav = (props) => {
     const style = {
         navStyle: {
-            height: '900px',
+            height: '100vh',
             width: '75px',
             backgroundColor: '#283B63',
             margin: '0',
@@ -49,7 +49,7 @@ const SideNav = (props) => {
 
                     <Link to='/dashboard' data-tip data-for="dashboardTooltip">
                         {/* <SectionSelectorButton id="dashboardButton" select={selectPage} buttonImg={DashIcon} sectionName='Dashboard' style={style.buttonStyle} /> */}
-                        <i class="fas fa-chart-pie fa-4x my-4" style={{color: '#F2EFE7', text: "center"}}></i>
+                        <i class="fas fa-chart-pie fa-4x my-4" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="dashboardTooltip">
                         <span>Dashboard</span>
@@ -57,7 +57,7 @@ const SideNav = (props) => {
 
                     <Link to='/inventory' data-tip data-for="inventoryTooltip">
                         {/* <SectionSelectorButton select={selectPage} buttonImg={InventoryIcon} sectionName='Inventory' style={style.buttonStyle} /> */}
-                        <i class="fas fa-list fa-4x my-4" style={{color: '#F2EFE7', text: "center"}}></i>
+                        <i class="fas fa-list fa-4x my-4" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="inventoryTooltip">
                         <span>Inventory</span>
@@ -65,7 +65,7 @@ const SideNav = (props) => {
 
                     <Link to='/expenses' data-tip data-for="expensesTooltip">
                         {/* <SectionSelectorButton select={selectPage} buttonImg={ExpensesIcon} sectionName='Expenses' style={style.buttonStyle} /> */}
-                        <i class="fas fa-receipt fa-4x my-4 ml-2" style={{color: '#F2EFE7', text: "center"}}></i>
+                        <i class="fas fa-receipt fa-4x my-4 ml-2" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="expensesTooltip">
                         <span>Expenses</span>
@@ -73,7 +73,7 @@ const SideNav = (props) => {
 
                     <Link onClick={() => logoutFunction()} data-tip data-for="logoutTooltip">
                         {/* <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} /> */}
-                        <i class="fas fa-sign-out-alt fa-4x my-4 ml-1" style={{color: '#F2EFE7', text: "center"}}></i>
+                        <i class="fas fa-sign-out-alt fa-4x my-4 ml-1" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="logoutTooltip">
                         <span>Log Out</span>
