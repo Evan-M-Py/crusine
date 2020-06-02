@@ -53,12 +53,12 @@ module.exports = function (app) {
     });
 
 
-    app.delete("/api/inventoryDel/:inventoryID", function (req, res) {
+    app.delete("/api/inventoryDel/:id", function (req, res) {
         console.log("DELETE ROUTE HIT");
-        console.log(req.params.inventoryID)
+        console.log(req.params.id)
         db.Inventory.destroy({
             where: {
-                id: req.params.inventoryID
+                id: req.params.id
             }
         }).then(function (crusine_db) {
             res.json(crusine_db);

@@ -4,6 +4,7 @@ import PieChart from './PieChart';
 import BarGraph from './BarGraph';
 import ContainerForTodos from '../ContainerForTodos'
 import { Col, Row, Container } from "react-bootstrap";
+import '../../App.css';
 
 import LineGraph from './HorizontalBarGraph';
 import HorizontalBarGraph from './HorizontalBarGraph';
@@ -42,7 +43,7 @@ const Dashboard = (props) => {
 
     const pieChartAjax = () => {
         return axios.all([getProduce(), getBread(), getDairy(), getMeat(), getSpices(), getNonParish()]).then(axios.spread(function (prod, bread, dairy, meat, spices, nonPar) {
-            console.log(prod.data[0].price)
+            // console.log(prod.data[0].price)
             const pieChartData = [prod.data.length, bread.data.length, dairy.data.length, meat.data.length, spices.data.length, nonPar.data.length];
             setPieChartData(pieChartData);
         })
@@ -112,9 +113,10 @@ const Dashboard = (props) => {
      const barGraphAjax = () => {
          axios.all([getMISC(), getFOH(), getTools(), getKitchenAppliances(), getVehicle()])
          .then(axios.spread(function (misc, foh, tools, kitchenApp, vehicle) {
-            const barGraphData =  [foh.data.length, misc.data.length, tools.data.length, kitchenApp.data.length, vehicle.data.length];   
-            setBarGraphData(barGraphData);
-         })
+             
+            const barGraphData =  [foh.data.length, misc.data.length, tools.data.length, kitchenApp.data.length, vehicle.data.length]; 
+
+        })
     )};
 
     function allGraphAjax() {
@@ -137,6 +139,10 @@ const Dashboard = (props) => {
     const [ pieChartData, setPieChartData ] = useState();
     const [ barGraphData, setBarGraphData ] = useState();
     // const [ lineGraphData, setLineGraphData ] = useState();
+
+
+
+  
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
         const style = {
@@ -190,11 +196,11 @@ const Dashboard = (props) => {
                             <Row>
                                 <div style={style.wrapper}>
 
-                                        <div style={style.graphs} >
+                                        <div className='weDontknowyet' style={style.graphs} >
                                             <h2 style={style.font}>Inventory Breakdown</h2>
                                             <PieChart graphData={pieChartData} />
                                         </div>
-                                        <div style={style.graphs} >
+                                        <div className='weDontknowyet' style={style.graphs} >
                                             <h2 style={style.font}>Expenses Breakdown</h2>
                                             <BarGraph graphData={barGraphData} />
                                         </div>
