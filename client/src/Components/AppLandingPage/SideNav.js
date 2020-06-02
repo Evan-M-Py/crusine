@@ -14,7 +14,7 @@ import Axios from 'axios';
 const SideNav = (props) => {
     const style = {
         navStyle: {
-            height: '900px',
+            height: '100vh',
             width: '75px',
             backgroundColor: '#283B63',
             margin: '0',

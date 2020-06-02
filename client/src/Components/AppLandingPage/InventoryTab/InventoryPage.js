@@ -71,7 +71,7 @@ function InventoryPage(props) {
 
                     <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
                     
-                    <InventoryDisplayTable style={style.tableStyle} data={invDisplay}  />
+                    <InventoryDisplayTable key={count} count={{setCount, count}} style={style.tableStyle} data={invDisplay}  />
                 
                 </div>
 
