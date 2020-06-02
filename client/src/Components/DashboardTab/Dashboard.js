@@ -114,9 +114,8 @@ const Dashboard = (props) => {
     const barGraphAjax = () => {
         axios.all([getMISC(), getFOH(), getTools(), getKitchenAppliances(), getVehicle()])
             .then(axios.spread(function (misc, foh, tools, kitchenApp, vehicle) {
-
                 const barGraphData = [foh.data.length, misc.data.length, tools.data.length, kitchenApp.data.length, vehicle.data.length];
-
+                setBarGraphData(barGraphData);
             })
             )
     };
