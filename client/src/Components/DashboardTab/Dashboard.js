@@ -116,14 +116,20 @@ const Dashboard = (props) => {
              
             const barGraphData =  [foh.data.length, misc.data.length, tools.data.length, kitchenApp.data.length, vehicle.data.length]; 
             setBarGraphData(barGraphData)
-            console.log(barGraphData)
 
         })
     )};
 
+//============================================================================================================================================================================================================
+
+
+
+
+
     function allGraphAjax() {
         barGraphAjax();
         pieChartAjax();
+
         // lineGraphAjax();
     };
 
@@ -136,7 +142,7 @@ const Dashboard = (props) => {
      useEffect(() => {
          allGraphAjax()},
          [true]
-     )
+     );
 
     const [ pieChartData, setPieChartData ] = useState();
     const [ barGraphData, setBarGraphData ] = useState();
