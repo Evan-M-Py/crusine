@@ -1,10 +1,10 @@
 ## CRUSINE
 
-A content management system for food trucks.
+A content management system for food trucks!
 
 Deployed: (insert heroku link)
 
-Technologies used: React, MySQL, Chart.js
+### Technologies used: React, MySQL, Chart.js
 
 A project created by:
 
