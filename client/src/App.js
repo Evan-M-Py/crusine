@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-// import FullAppPage from './Components/AppLandingPage/FullAppPage/FullAppPage'
 import SignupPage from './Components/SignupForm';
 import UserContext from './utils/userContext';
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom';
@@ -47,13 +46,10 @@ const App = (props) => {
                     </Route>
 
                     <Route exact path="/signup" component={SignupPage} >
-                        {/* <SignupPage userID={props.userID} /> */}
+
                         <SignupPage handleContextChange={handleContextChange} />
                     </Route>
 
-
-
-                    {/* <div > */}
 
                     <div style={style.parentDiv}>
                         {location.pathname !== '/signup' && location.pathname !== '/' && <SideNav handleContextChange={handleContextChange} />}

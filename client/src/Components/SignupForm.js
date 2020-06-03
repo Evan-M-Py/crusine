@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { useForm } from "react-hook-form";

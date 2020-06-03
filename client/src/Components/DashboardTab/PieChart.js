@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Pie } from 'react-chartjs-2';
 
 const PieChart = (props) => {
@@ -19,8 +19,6 @@ const PieChart = (props) => {
                     '#61DAFB',
                     '#183B63',
                     '#B7D4DC',
-                    // '#F2EFE7',
-                    // '#C4B2BC',
                     '#9379AC',
                     '#664f7d'
                 ],
@@ -30,8 +28,6 @@ const PieChart = (props) => {
                     '#61DAFB',
                     '#183B63',
                     '#B7D4DC',
-                    // '#F2EFE7',
-                    // '#C4B2BC',
                     '#9379AC',
                     '#664f7d'
                 ],

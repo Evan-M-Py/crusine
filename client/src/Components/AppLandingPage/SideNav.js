@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Wrapper from '../wrapper';
-import SectionSelectorButton from './SectionSelectorButton';
-import DashIcon from '../../icons/dash.png';
-import ExpensesIcon from '../../icons/expenses.png';
-import InventoryIcon from '../../icons/inventory.png';
-import LogoutIcon from '../../icons/logout.png'
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Axios from 'axios';
@@ -37,9 +32,6 @@ const SideNav = (props) => {
         props.handleContextChange();
     };
 
-    const selectPage = () => {
-    };
-
     if (loginStatus) {
         return <Redirect to='/' />
     } else
@@ -48,7 +40,6 @@ const SideNav = (props) => {
                 <div style={style.navStyle} className="justify-content-center">
 
                     <Link to='/dashboard' data-tip data-for="dashboardTooltip">
-                        {/* <SectionSelectorButton id="dashboardButton" select={selectPage} buttonImg={DashIcon} sectionName='Dashboard' style={style.buttonStyle} /> */}
                         <i class="fas fa-chart-pie fa-4x my-4" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="dashboardTooltip">
@@ -56,7 +47,6 @@ const SideNav = (props) => {
                     </ReactTooltip>
 
                     <Link to='/inventory' data-tip data-for="inventoryTooltip">
-                        {/* <SectionSelectorButton select={selectPage} buttonImg={InventoryIcon} sectionName='Inventory' style={style.buttonStyle} /> */}
                         <i class="fas fa-list fa-4x my-4" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="inventoryTooltip">
@@ -64,7 +54,6 @@ const SideNav = (props) => {
                     </ReactTooltip>
 
                     <Link to='/expenses' data-tip data-for="expensesTooltip">
-                        {/* <SectionSelectorButton select={selectPage} buttonImg={ExpensesIcon} sectionName='Expenses' style={style.buttonStyle} /> */}
                         <i class="fas fa-receipt fa-4x my-4 ml-2" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="expensesTooltip">
@@ -72,7 +61,6 @@ const SideNav = (props) => {
                     </ReactTooltip>
 
                     <Link onClick={() => logoutFunction()} data-tip data-for="logoutTooltip">
-                        {/* <SectionSelectorButton select={selectPage} buttonImg={LogoutIcon} sectionName='Logout' style={style.buttonStyle} /> */}
                         <i class="fas fa-sign-out-alt fa-4x my-4 ml-1" style={{ color: '#F2EFE7', text: "center" }}></i>
                     </Link>
                     <ReactTooltip id="logoutTooltip">

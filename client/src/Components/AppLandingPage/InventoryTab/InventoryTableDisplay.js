@@ -39,9 +39,9 @@ const InventoryTableDisplay = (props) => {
     };
 
     const columns = [
-        { dataField: 'id', text: 'Id' },
-        { dataField: 'category', text: 'Category' },
+        { dataField: 'id', text: 'ID' },
         { dataField: 'itemName', text: 'Item Name' },
+        { dataField: 'category', text: 'Category' },
         { dataField: 'unit', text: 'Unit' },
         { dataField: 'quantity', text: 'Quantity' },
         { dataField: 'price', text: 'Price' },
@@ -105,7 +105,7 @@ const InventoryTableDisplay = (props) => {
     return (
         <div>
 
-            <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
+            <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>Delete</button>
 
             <BootstrapTable key={componentRemount} selectRow={selectRow} columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
 

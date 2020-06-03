@@ -4,11 +4,11 @@ import { Doughnut } from 'react-chartjs-2';
 function DoughnutChart(props) {
     const doughnutChartData = {
         labels: [
-            'foh/patio set-up',
-            'misc ',
-            'tools',
-            'kitchen appliances',
-            'vehicle'
+            'Misc',
+            'FOH/Patio set-up',
+            'Tools',
+            'Kitchen Appliances',
+            'Vehicle'
         ],
         datasets: [
             {

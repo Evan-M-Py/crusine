@@ -2,19 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PieChart from './PieChart';
 import BarGraph from './BarGraph';
-import ContainerForTodos from '../ContainerForTodos'
+import ContainerForTodos from '../ContainerForTodos';
 import { Col, Row, Container } from "react-bootstrap";
 import '../../App.css';
-
-import LineGraph from './HorizontalBarGraph';
-import HorizontalBarGraph from './HorizontalBarGraph';
-
+// import HorizontalBarGraph from './HorizontalBarGraph';
 
 const Dashboard = (props) => {
-
-    // state = {
-    //     // Code goes here
-    // }
 
     function getProduce() {
         return axios.get('/api/pieChart/Produce/' + props.userID)
@@ -49,44 +42,6 @@ const Dashboard = (props) => {
         })
         )
     };
-
-    // const lineGraphAjax = () => {
-    //     return axios.all([getProduce(), getBread(), getDairy(), getMeat(), getSpices(), getNonParish()]).then(axios.spread((one, two, three, four, five, six) => {
-    //     const costArray =  [one, two, three, four, five, six];
-    //     for (let i = 0; i < costArray.length; i++) {
-    //         let layerOne = []
-    //         layerOne = costArray[i].data;
-    //         for (let i = 0; i < layerOne.length; i++) {
-    //             let layerThree = [];
-    //             let layerTwo = layerOne[i].price;
-    //             layerThree.push(layerTwo)
-    //             console.log(sum(layerThree))
-    //         }
-    //     }
-
-    //     })
-    // )};
-
-    //     function theForLoop(one) {
-    //         for(var i = 0; i < one.length; i++){
-    //             let  priceArray = []
-    //             priceArray.push(one[i]) 
-    //                 console.log(priceArray);
-    //             }
-    //         }
-
-    //     function sum(array) {
-    //              array.reduce(function(a, b){
-    //             return a + b;
-    //         }, 0)};
-
-
-
-
-
-
-
-
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -124,15 +79,9 @@ const Dashboard = (props) => {
 
     //============================================================================================================================================================================================================
 
-
-
-
-
     function allGraphAjax() {
         barGraphAjax();
         pieChartAjax();
-
-        // lineGraphAjax();
     };
 
     const [refresh, setRefresh] = useState(true)
@@ -149,10 +98,6 @@ const Dashboard = (props) => {
 
     const [pieChartData, setPieChartData] = useState();
     const [barGraphData, setBarGraphData] = useState();
-    // const [ lineGraphData, setLineGraphData ] = useState();
-
-
-
 
 
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
