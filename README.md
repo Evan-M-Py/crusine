@@ -6,7 +6,7 @@ Deployed: (insert heroku link)
 
 Technologies used: React, MySQL, Chart.js
 
-A project created by:
+#### A project created by:
 
 #### Evan Pylar https://github.com/Evan-M-Py | https://www.linkedin.com/in/evan-py/
 
