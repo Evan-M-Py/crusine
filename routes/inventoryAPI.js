@@ -40,23 +40,10 @@ module.exports = function (app) {
     //         });
     // });
 
-    // // PUT route for UPDATING using parameters
-    // app.put("/api/inventory/:id", function (req, res) {
-    //     console.log("UPDATE ROUTE HIT");
-    //     db.Post.update({
-    //         where: {
-    //             id: req.params.inventoryID
-    //         }
-    //     }).then(function (crusine_db) {
-    //         res.json(crusine_db);
-    //     });
-    // });
-
-    // DELETE route for DELETING
-    app.delete("/api/inventory/:inventoryID", function (req, res) {
-        console.log("DELETE ROUTE HIT");
-        console.log(req.params.inventoryID)
-        db.Inventory.destroy({
+    // PUT route for UPDATING using parameters
+    app.put("/api/inventory/:id", function (req, res) {
+        console.log("UPDATE ROUTE HIT");
+        db.Post.update({
             where: {
                 id: req.params.inventoryID
             }
@@ -64,4 +51,33 @@ module.exports = function (app) {
             res.json(crusine_db);
         });
     });
+
+
+    app.delete("/api/inventoryDel/:id", function (req, res) {
+        console.log("DELETE ROUTE HIT");
+        console.log(req.params.id)
+        db.Inventory.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (crusine_db) {
+            res.json(crusine_db);
+        });
+    });
+
+
+    app.put("/api/inventory/", function (req, res) {
+        console.log("UPDATE ROUTE HIT");
+        console.log(req.body)
+        db.Inventory.update(
+            req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (crusine_db) {
+                res.json(crusine_db);
+            });
+    });
+
 };

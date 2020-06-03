@@ -4,45 +4,53 @@ import { Pie } from 'react-chartjs-2';
 const PieChart = (props) => {
 
     const pieChartData = {
-        labels: [ 
-            'produce', 
-            'bread', 
-            'dairy', 
-            'meat', 
+        labels: [
+            'produce',
+            'bread',
+            'dairy',
+            'meat',
             'spices',
             'non-parishable'
-            ],
-        datasets:[ 
+        ],
+        datasets: [
             {
-            label: 'Inventory Catagories',
-            backgroundColor: ['#ffd31d',
-            '#fae7cb',
-            '#ffb385',
-            '#ff7272',
-            '#f57b51'],
-            borderColor: 'rgba(255,99,132,0.2)',
-            borderWidth: 1,
-            hoverBackgroundColor: ['#ffd31d',
-            '#fae7cb',
-            '#ffb385',
-            '#ff7272',
-            '#f57b51'],
-            hoverBorderColor: [
-                'rgba(255,99,132,1)'
-            ],
-            data: props.graphData
+                label: 'Inventory Catagories',
+                backgroundColor: [
+                    '#61DAFB',
+                    '#183B63',
+                    '#B7D4DC',
+                    // '#F2EFE7',
+                    // '#C4B2BC',
+                    '#9379AC',
+                    '#664f7d'
+                ],
+                borderColor: '#C4B2BC',
+                borderWidth: 1,
+                hoverBackgroundColor: [
+                    '#61DAFB',
+                    '#183B63',
+                    '#B7D4DC',
+                    // '#F2EFE7',
+                    // '#C4B2BC',
+                    '#9379AC',
+                    '#664f7d'
+                ],
+                hoverBorderColor: [
+                    '#C4B2BC'
+                ],
+                data: props.graphData
             }
         ]
     };
 
-    return(
+    return (
         <div>
-             <Pie
+            <Pie
                 data={pieChartData}
                 width={400}
                 height={400}
-                options={{ 
-                    maintainAspectRatio: false 
+                options={{
+                    maintainAspectRatio: false
                 }}
             />
         </div>

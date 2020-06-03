@@ -39,6 +39,9 @@ function InventoryPage(props) {
 
 
     const style = {
+        table: {
+            marginLeft:'4rem'
+        },
         
         tableStyle: {
             width: '100rem'
@@ -46,14 +49,15 @@ function InventoryPage(props) {
         
         graphSize: {
             margin: '3px',
-            marginLeft: '2rem',
-            height: '25rem',
-            width: '35rem',
+            marginTop: '2rem',
+            height: '30rem',
+            width: '85rem',
             background: 'blue'
         },
 
         container: {
-            marginTop: '2rem'
+            marginTop: '2rem',
+            justifyContent: 'center'
         }
 
     }
@@ -63,37 +67,26 @@ function InventoryPage(props) {
         <Container style={style.container}>
             <Row>
 
-                <Col md='6'>
-                    <Row>
-                        <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
-                    </Row>
+                <div style={style.table}>
 
-                    <Row >
-                        <InventoryDisplayTable style={style.tableStyle} data={invDisplay}  />
-                    </Row>
-                </Col>
-
-                <Col md='6'>
-                    <Row>
-
-                        <Col>
-                        <div style={style.graphSize}>
-
-                        </div>
-                        </Col>
-
-                        <Col>
-                        <div style={style.graphSize}>
-
-                        </div>
-                        </Col>
-
-                    </Row>
-
-                </Col>
+                    <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
+                    
+                    <InventoryDisplayTable key={count} count={{setCount, count}} style={style.tableStyle} data={invDisplay}  />
+                
+                </div>
 
 
             </Row>
+
+                <Row>
+
+
+                        <div style={style.graphSize}>
+
+                        </div>
+
+
+                </Row>
 
         </Container>
     </>   

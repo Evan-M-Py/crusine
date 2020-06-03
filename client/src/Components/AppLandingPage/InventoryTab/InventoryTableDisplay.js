@@ -1,88 +1,114 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import BootstrapTable from 'react-bootstrap-table-next';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import cellEditFactory from 'react-bootstrap-table2-editor';
+import { Row, Container, Col, Modal, Button } from 'react-bootstrap';
 import Axios from 'axios';
+import { Route } from 'react-router-dom';
+import { DBCLICK_TO_CELL_EDIT } from 'react-bootstrap-table2-editor/lib/src/const';
 
 const InventoryTableDisplay = (props) => {
 
+    const [updateBool, setUpdateBool] = useState(false);
+    const [componentRemount, setComponentRemount] = useState(0)
 
-    const style = {
-        tableLabels: {
-            width: ''
-        }
-    }
 
-    function customConfirm(next, dropRowKeys) {
-        for (let i = 0; i < dropRowKeys.length; i++) {
-            const dbObj = dropRowKeys[i]
-            // console.log(dropRowKeysStr);
-            Axios.delete('/api/inventory/' + dbObj).then((res) => {
-                next();
+    //===================================================================================================================================================
+
+    function deleteHandler(dbObj) {
+        for (let i = 0; i < dbObj.length; i++) {
+            console.log(dbObj)
+            Axios.delete('/api/inventoryDel/' + dbObj[i].id).then((res) => {
+                props.count.setCount(props.count.count + 1)
+                console.log('you deleted WHAT?!?!')
+
             })
         }
     };
 
-    const selectRowProp = {
-        mode: 'checkbox'
+
+    const [updateTarget, setUpdateTarget] = useState('')
+
+
+    const updateAxios = (x) => {
+
+        Axios.put("/api/inventory/", x).then((res) => {
+            console.log("completed")
+        })
     };
 
-    const options = {
-        handleConfirmDeleteRow: customConfirm
+    const columns = [
+        { dataField: 'id', text: 'Id' },
+        { dataField: 'category', text: 'Category' },
+        { dataField: 'itemName', text: 'Item Name' },
+        { dataField: 'unit', text: 'Unit' },
+        { dataField: 'quantity', text: 'Quantity' },
+        { dataField: 'price', text: 'Price' },
+    ]
+
+
+
+
+    const cellEdit = cellEditFactory({
+        mode: 'click',
+        onStartEdit: (row, column, rowIndex, columnIndex) => { setUpdateTarget(row) },
+        beforeSaveCell(oldValue, newValue, row, column, done) {
+
+
+            setTimeout(() => {
+                if (window.confirm('Do you want to accept this change?')) {
+
+                    done(); // contine to save the changes
+                    updateAxios(row)
+                } else {
+                    done(false); // reject the changes
+                }
+            }, 0);
+            return { async: true };
+
+
+        }
+    });
+    const tableData = [...props.data]
+
+    const [deleteObject, setDeleteObject] = useState([]);
+
+    const selectRow = {
+        mode: 'checkbox',
+
+        clickToExpand: true,
+
+        onSelect: (row, isSelect, rowIndex, e) => {
+            console.log(row)
+            setDeleteObject([...deleteObject, row])
+        },
+
+        mode: 'checkbox',
+        onSelectAll: (isSelect, rows, e) => {
+            console.log(rows)
+            setDeleteObject(rows)
+        }
     };
+
+
+    const style = {
+        deleteButton: {
+            color: 'red',
+            width: '4rem'
+        }
+    }
+
+
+
 
     return (
         <div>
-            <BootstrapTable deleteRow={true} selectRow={selectRowProp} data={props.data} options={options}>
-                <TableHeaderColumn
-                    isKey='true'
-                    dataField='id'
-                    dataAlign='center'
-                    headerAlign="left"
-                    width="75"
-                >
-                    ID
-          </TableHeaderColumn>
-                <TableHeaderColumn
-                    dataField='category'
-                    dataAlign='center'
-                    headerAlign="left"
-                    width="175"
-                >
-                    Category
-          </TableHeaderColumn>
-                <TableHeaderColumn
-                    dataField='itemName'
-                    dataAlign='center'
-                    headerAlign="left"
-                    width="325"
-                >
-                    Item Name
-          </TableHeaderColumn>
-                <TableHeaderColumn
-                    dataField='unit'
-                    dataAlign='center'
-                    headerAlign="left"
-                    width="100"
-                >
-                    Quantity Type
-          </TableHeaderColumn>
-                <TableHeaderColumn
-                    dataField='quantity'
-                    dataAlign='center'
-                    headerAlign="left"
-                    width="100"
-                >
-                    Quantity
-          </TableHeaderColumn>
-                <TableHeaderColumn
-                    dataField='price'
-                    dataAlign='center'
-                    headerAlign="left"
-                    width="200"
-                >
-                    Cost
-          </TableHeaderColumn>
-            </BootstrapTable>
+
+            <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
+
+            <BootstrapTable key={componentRemount} selectRow={selectRow} columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
+
         </div>
     )
 }
