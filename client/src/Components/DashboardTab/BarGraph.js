@@ -43,12 +43,12 @@ function BarGraph(props) {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true,
-                    // min: 0
+                    beginAtZero: true
                 }
             }]
         }
-    }
+    };
+
     return (
         <div className='chart'>
             <Bar

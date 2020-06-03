@@ -62,7 +62,7 @@ function LoginPage(props) {
                                     <Col>
 
                                         <label className='mr-2'>Password</label>
-                                        <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="password" placeholder="Enter your password" />
+                                        <input className='form-control' onChange={(e) => handleInputChange(e)} type='password' name="password" placeholder="Enter your password" />
 
                                     </Col>
                                 </Row>

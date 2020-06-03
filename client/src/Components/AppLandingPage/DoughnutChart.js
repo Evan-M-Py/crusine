@@ -31,9 +31,10 @@ function DoughnutChart(props) {
         ]
     };
 
+
     return (
         <div className='chart'>
-            <Doughnut data={doughnutChartData}/>
+            <Doughnut data={doughnutChartData} />
         </div>
     );
 };
