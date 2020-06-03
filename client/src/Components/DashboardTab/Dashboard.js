@@ -116,7 +116,7 @@ const Dashboard = (props) => {
             .then(axios.spread(function (misc, foh, tools, kitchenApp, vehicle) {
 
                 const barGraphData = [foh.data.length, misc.data.length, tools.data.length, kitchenApp.data.length, vehicle.data.length];
-                console.log(foh.data.price);
+                // console.log(foh.data.price);
                 setBarGraphData(barGraphData);
             })
             )

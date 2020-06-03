@@ -14,79 +14,79 @@ function LoginPage(props) {
 
     const { register, handleSubmit, watch, errors } = useForm();
 
-    const [ text, setText ] = useState({
+    const [text, setText] = useState({
         username: '',
         password: ''
     });
-    const [ loginStatus, setLoginStatus ] = useState(false);
-    
+    const [loginStatus, setLoginStatus] = useState(false);
+
     const handleInputChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
-        console.log(name);
-        console.log(value)
+        // console.log(name);
+        // console.log(value);
 
         setText((prevState) => ({
             ...prevState, [name]: value
         })
         )
-    }; 
+    };
 
     const onSubmit = (e) => {
-        console.log('outside axios')
-        console.log(text)
+        // console.log('outside axios')
+        // console.log(text)
         axios.post('/login', text).then(response => {
-            console.log('inside axios')
+            // console.log('inside axios')
             const truckId = response.data.truckObj[0].id
-            props.handleContextChange( truckId )
+            props.handleContextChange(truckId)
             setLoginStatus(true);
         });
     }
-        if(loginStatus){
-            return <Redirect to='/dashboard'/>
-        } else
+    if (loginStatus) {
+        return <Redirect to='/dashboard' />
+    } else
         return (
-            <div  className="login">
-                    <Container className="login d-flex align-items-center w-100">
-                        <Row className="justify-content-center w-100">
-                            <Jumbotron className="col-8">
-                                <Brand />
-                                <form onSubmit={handleSubmit(onSubmit)}>
-                                    <Row>
-                                        <Col>
-                                            
-                                            <label>Username</label>
-                                            <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="username" placeholder="Enter your username"/>
-                                            
-                                        </Col>
-                                        <Col>
-                                            
-                                                <label className='mr-2'>Password</label>
-                                                <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="password" placeholder="Enter your password"/>
-                                            
-                                        </Col>
-                                    </Row>
-                                    <Row className="justify-content-center">
-                                        <button
-                                            className="landing-btn col-4 mt-4 btn"
-                                            variant="primary"
-                                            type="submit"
-                                        >
-                                            Login
+            <div className="login">
+                <Container className="login d-flex align-items-center w-100">
+                    <Row className="justify-content-center w-100">
+                        <Jumbotron className="col-8">
+                            <Brand />
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <Row>
+                                    <Col>
+
+                                        <label>Username</label>
+                                        <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="username" placeholder="Enter your username" />
+
+                                    </Col>
+                                    <Col>
+
+                                        <label className='mr-2'>Password</label>
+                                        <input className='form-control' onChange={(e) => handleInputChange(e)} type='text' name="password" placeholder="Enter your password" />
+
+                                    </Col>
+                                </Row>
+                                <Row className="justify-content-center">
+                                    <button
+                                        className="landing-btn col-4 mt-4 btn"
+                                        variant="primary"
+                                        type="submit"
+                                    >
+                                        Login
                                         </button>
-                                    </Row>
-                                    <Row className="justify-content-center">
-                                        <a className="mt-3 teal" href="/signup">
-                                            Not a member yet? Sign up here
+                                </Row>
+                                <Row className="justify-content-center">
+                                    <a className="mt-3 teal" href="/signup">
+                                        Not a member yet? Sign up here
                                         </a>
-                                    </Row>
-                                </form>
-                            </Jumbotron>
-                        </Row>
-                    </Container>
+                                </Row>
+                            </form>
+                        </Jumbotron>
+                    </Row>
+                </Container>
 
             </div>
         );
-    }
+}
 
 export default LoginPage;

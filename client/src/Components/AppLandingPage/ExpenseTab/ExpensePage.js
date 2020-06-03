@@ -83,56 +83,66 @@ function ExpensePage(props) {
     }
 
 
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-function getKitchenAppliances() {
-    return axios.get('/api/barGraph/Kitchen-Appliances/' + props.userID)
- };
+    function getKitchenAppliances() {
+        return axios.get('/api/barGraph/Kitchen-Appliances/' + props.userID)
+    };
 
- function getTools() {
-     return  axios.get('/api/barGraph/Tools/' + props.userID)
- };
+    function getTools() {
+        return axios.get('/api/barGraph/Tools/' + props.userID)
+    };
 
- function getVehicle() {
-     return axios.get('/api/barGraph/Vehicle/' + props.userID)
- };
+    function getVehicle() {
+        return axios.get('/api/barGraph/Vehicle/' + props.userID)
+    };
 
- function getFOH() {
-     return  axios.get('/api/barGraph/FOH/' + props.userID)
- };
+    function getFOH() {
+        return axios.get('/api/barGraph/FOH/' + props.userID)
+    };
 
- function getMISC() {
-     return  axios.get('/api/barGraph/MISC/' + props.userID)
- };
-
-
- const doughnutChartAjax = () => {
-     axios.all([getMISC(), getFOH(), getTools(), getKitchenAppliances(), getVehicle()])
-     .then(axios.spread(function (misc, foh, tools, kitchenApp, vehicle) {
-        const categoryArray =  [misc.data, foh.data, tools.data, kitchenApp.data, vehicle.data]; 
-        
-        const totalCostArray = [0,0,0,0,0]
-
-        for (let i = 0; i < categoryArray.length; i++) {
-            const a = [] 
-            a.push(Number(categoryArray[i].price))
-            for (let y = 0; y < a.length; y++) {
-
-                totalCostArray[i] += a[y]
-               console.log(totalCostArray)
-            }
-        }   
-    })
-)};
+    function getMISC() {
+        return axios.get('/api/barGraph/MISC/' + props.userID)
+    };
 
 
+    const doughnutChartAjax = () => {
+        axios.all([getMISC(), getFOH(), getTools(), getKitchenAppliances(), getVehicle()])
+            .then(axios.spread(function (misc, foh, tools, kitchenApp, vehicle) {
+                const categoryArray = [misc.data, foh.data, tools.data, kitchenApp.data, vehicle.data];
 
-useEffect(() => {
-    doughnutChartAjax()},
-    [true]
-)
+                const totalCostArray = [0, 0, 0, 0, 0]
 
-const [ doughnutChart, setdoughnutChart ] = useState();
+                for (let i = 0; i < categoryArray.length; i++) {
+                    const a = categoryArray[i];
+                    // console.log(a);
+
+                    for (let y = 0; y < a.length; y++) {
+                        // console.log(a[y]);
+
+                        const b = Number(a[y].price);
+                        // console.log(b)
+
+                        console.log(Math.round(100 * b) / 100)
+                        totalCostArray[i] += b
+                    }
+                }
+
+                setdoughnutChart(totalCostArray);
+
+            })
+            )
+    };
+
+
+
+    useEffect(() => {
+        doughnutChartAjax()
+    },
+        [true]
+    )
+
+    const [doughnutChart, setdoughnutChart] = useState();
 
 
 
@@ -141,14 +151,14 @@ const [ doughnutChart, setdoughnutChart ] = useState();
             <Container style={style.container}>
                 <Row>
                     <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
-                    <ExpenseDisplayTable  key={count} count={{setCount, count}} style={style.tableStyle} data={expDisplay} />
+                    <ExpenseDisplayTable key={count} count={{ setCount, count }} style={style.tableStyle} data={expDisplay} />
                 </Row>
 
                 <Row>
-                <div className='weDontknowyet' style={style.graphs} >
-                    <h2 style={style.font}>Expenses Breakdown</h2>
-                        <DoughnutChart DoughnutChartData={doughnutChart}/>
-                </div>
+                    <div className='weDontknowyet' style={style.graphs} >
+                        <h2 style={style.font}>Expenses Breakdown</h2>
+                        <DoughnutChart DoughnutChartData={doughnutChart} key={count} />
+                    </div>
                 </Row>
 
             </Container>
