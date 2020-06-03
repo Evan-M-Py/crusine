@@ -24,7 +24,7 @@ const ExpenseTableDisplay = (props) => {
     const columns = [
         { dataField: 'id', text: 'Id' },
         { dataField: 'category', text: 'Category' },
-        { dataField: 'expense', text: 'expense' },
+        { dataField: 'expense', text: 'Expense' },
         { dataField: 'price', text: 'Price' },
 
     ]
@@ -96,15 +96,15 @@ const ExpenseTableDisplay = (props) => {
 
     const style = {
         deleteButton: {
-            color: 'red',
-            width: '4rem'
+            // color: 'red',
+            // width: '4rem'
         }
     };
 
 
     return (
         <div>
-            <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
+            <button className="btn btn-danger mb-2" style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>Delete</button>
             <BootstrapTable key={componentRemount} selectRow={selectRow} columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
 
         </div>
