@@ -5,7 +5,7 @@ const DropdownBase = props => {
     return(
         <Dropdown  style={props.style}>
             <Dropdown.Toggle size='sm' variant="secondary" id="dropdown-basic">
-                {props.buttonLabel}
+                {props.value}
             </Dropdown.Toggle>
 
             <Dropdown.Menu >
