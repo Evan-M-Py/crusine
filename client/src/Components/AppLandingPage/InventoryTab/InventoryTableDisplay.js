@@ -11,32 +11,9 @@ import { DBCLICK_TO_CELL_EDIT } from 'react-bootstrap-table2-editor/lib/src/cons
 
 const InventoryTableDisplay = (props) => {
 
-
-
-  const [show, setShow] = useState(false);
   const [ updateBool, setUpdateBool ] = useState(false);
   const [ componentRemount, setComponentRemount ] = useState(0)
 
-  var timeOut
-
-  const handleCloseCancel = () => {
-    
-    setShow(false);
-    setUpdateBool(false);
-
-
-  };
-  
-  const handleCloseSubmit = () => {
-    console.log('sucsess')
-    setShow(false);
-    setUpdateBool(true);
-
-    
-
-  };
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
 
 //===================================================================================================================================================
 
@@ -128,21 +105,6 @@ const selectRow = {
 
   return (
     <div>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseCancel}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleCloseSubmit}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
 
       <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
 

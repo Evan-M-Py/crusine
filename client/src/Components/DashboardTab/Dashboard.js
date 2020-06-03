@@ -122,9 +122,16 @@ const Dashboard = (props) => {
             )
     };
 
+    //============================================================================================================================================================================================================
+
+
+
+
+
     function allGraphAjax() {
         barGraphAjax();
         pieChartAjax();
+
         // lineGraphAjax();
     };
 
@@ -138,7 +145,7 @@ const Dashboard = (props) => {
         allGraphAjax()
     },
         [true]
-    )
+    );
 
     const [pieChartData, setPieChartData] = useState();
     const [barGraphData, setBarGraphData] = useState();
