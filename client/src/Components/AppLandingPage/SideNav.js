@@ -7,6 +7,7 @@ import ReactTooltip from 'react-tooltip';
 import Axios from 'axios';
 
 const SideNav = (props) => {
+
     const style = {
         navStyle: {
             height: '100vh',
@@ -21,7 +22,7 @@ const SideNav = (props) => {
             width: '80px',
             height: '80px'
         }
-    }
+    };
 
     const [loginStatus, setLoginStatus] = useState(false);
 
@@ -71,4 +72,5 @@ const SideNav = (props) => {
             )} />
         )
 }
+
 export default SideNav;

@@ -13,7 +13,6 @@ const InventoryTableDisplay = (props) => {
     const [updateBool, setUpdateBool] = useState(false);
     const [componentRemount, setComponentRemount] = useState(0)
 
-
     //===================================================================================================================================================
 
     function deleteHandler(dbObj) {
@@ -27,9 +26,7 @@ const InventoryTableDisplay = (props) => {
         }
     };
 
-
     const [updateTarget, setUpdateTarget] = useState('')
-
 
     const updateAxios = (x) => {
 
@@ -47,9 +44,6 @@ const InventoryTableDisplay = (props) => {
         { dataField: 'price', text: 'Price' },
     ]
 
-
-
-
     const cellEdit = cellEditFactory({
         mode: 'click',
         onStartEdit: (row, column, rowIndex, columnIndex) => { setUpdateTarget(row) },
@@ -65,25 +59,23 @@ const InventoryTableDisplay = (props) => {
                     done(false); // reject the changes
                 }
             }, 0);
+
             return { async: true };
-
-
         }
     });
+
     const tableData = [...props.data]
 
     const [deleteObject, setDeleteObject] = useState([]);
 
     const selectRow = {
+
         mode: 'checkbox',
-
         clickToExpand: true,
-
         onSelect: (row, isSelect, rowIndex, e) => {
             console.log(row)
             setDeleteObject([...deleteObject, row])
         },
-
         mode: 'checkbox',
         onSelectAll: (isSelect, rows, e) => {
             console.log(rows)
@@ -91,16 +83,12 @@ const InventoryTableDisplay = (props) => {
         }
     };
 
-
     const style = {
         deleteButton: {
             // color: 'red',
             // width: '4rem'
         }
-    }
-
-
-
+    };
 
     return (
         <div>
@@ -110,7 +98,7 @@ const InventoryTableDisplay = (props) => {
             <BootstrapTable key={componentRemount} selectRow={selectRow} columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
 
         </div>
-    )
-}
+    );
+};
 
 export default InventoryTableDisplay;

@@ -2,6 +2,7 @@ import React from "react";
 import { Doughnut } from 'react-chartjs-2';
 
 function DoughnutChart(props) {
+
     const doughnutChartData = {
         labels: [
             'Misc',
