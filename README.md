@@ -1,18 +1,18 @@
 ## CRUSINE
 
-A content management system for food trucks!
+### A content management system for food trucks!
 
 Deployed: (insert heroku link)
 
-### Technologies used: React, MySQL, Chart.js
+Technologies used: React, MySQL, Chart.js
 
 A project created by:
 
-Evan Pylar https://github.com/Evan-M-Py | https://www.linkedin.com/in/evan-py/
+#### Evan Pylar https://github.com/Evan-M-Py | https://www.linkedin.com/in/evan-py/
 
-Zac Eskridge https://github.com/zace118 | https://www.linkedin.com/in/zachary-eskridge/
+#### Zac Eskridge https://github.com/zace118 | https://www.linkedin.com/in/zachary-eskridge/
 
-Ryan Williams https://github.com/Niterich | https://www.linkedin.com/in/ryanwilliams99/
+#### Ryan Williams https://github.com/Niterich | https://www.linkedin.com/in/ryanwilliams99/
 
 Crusine is an expense and inventory tracking sytem for food truck owners.
 
