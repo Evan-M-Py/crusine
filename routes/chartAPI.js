@@ -1,17 +1,15 @@
 const db = require("../models");
 
-
-
-module.exports = function(app) {
+module.exports = function (app) {
     app.get("/api/pieChart/:category/:truckID", function (req, res) {
-            db.Inventory.findAll({
-                where: {
-                    TruckId: req.params.truckID,
-                    category: req.params.category
-                  }
+        db.Inventory.findAll({
+            where: {
+                TruckId: req.params.truckID,
+                category: req.params.category
+            }
         }).then(function (response) {
-                res.json(response);
-            });
+            res.json(response);
+        });
 
     });
 
@@ -21,8 +19,8 @@ module.exports = function(app) {
             where: {
                 TruckId: req.params.truckID,
                 category: req.params.category
-                }
-    }).then(function (response) {
+            }
+        }).then(function (response) {
             res.json(response);
         });
 

@@ -18,7 +18,7 @@ const ButtonForInventoryComponents = props => {
                 onClick={() => setOpen(!open)}
                 aria-controls="example-collapse-text"
                 // aria-expanded={open}
-                variant='secondary'
+                className='landing-btn mb-1'
             >
                 Add to Inventory
         </Button>

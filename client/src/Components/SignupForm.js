@@ -68,7 +68,7 @@ const SignupPage = (props) => {
                                 </Col>
                                 <Col>
                                     <label htmlFor='password'>Password:</label>
-                                    <input className="form-control" type="text" name="password" ref={register({ required: true, minLength: 8 })} />
+                                    <input className="form-control" type="password" name="password" ref={register({ required: true, minLength: 8 })} />
                                 </Col>
                             </Row>
                             <Row className="justify-content-center">

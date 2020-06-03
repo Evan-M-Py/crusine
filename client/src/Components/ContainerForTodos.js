@@ -44,7 +44,7 @@ const Form = (props) => {
                 onChange={(e) => handleChange(e)}
             />
             <button
-                className="btn btn-primary col-2 ml-2"
+                className="btn landing-btn col-2 ml-2"
                 onClick={(e) => handleNewTodoAddition(e)}
             >
                 Add To-do!
