@@ -9,14 +9,15 @@ import { Route } from 'react-router-dom';
 
 const ExpenseTableDisplay = (props) => {
 
-  const [ componentRemount, setComponentRemount ] = useState(0)
+    const [componentRemount, setComponentRemount] = useState(0)
     const [updateTarget, setUpdateTarget] = useState('')
 
     const updateAxios = (x) => {
         console.log(x)
         console.log(x.id)
-        Axios.put("/api/inventory/", x).then((res) => {
-            console.log("completed")
+        Axios.put("/api/expense/", x).then((res) => {
+            props.handleTableEdit();
+            console.log("completed");
         })
     };
 
@@ -61,49 +62,49 @@ const ExpenseTableDisplay = (props) => {
 
 
     function deleteHandler(dbObj) {
-      for (let i = 0; i < dbObj.length; i++) {
-        console.log(dbObj)
-          Axios.delete('/api/expenseDel/' + dbObj[i].id).then((res) => {
-             props.count.setCount(props.count.count + 1)
-               console.log('you deleted WHAT?!?!')
-               
-           })
-         }
-  };
+        for (let i = 0; i < dbObj.length; i++) {
+            console.log(dbObj)
+            Axios.delete('/api/expenseDel/' + dbObj[i].id).then((res) => {
+                props.count.setCount(props.count.count + 1)
+                console.log('you deleted WHAT?!?!')
+
+            })
+        }
+    };
 
 
-    const [ deleteObject, setDeleteObject ] = useState([]);
+    const [deleteObject, setDeleteObject] = useState([]);
 
     const selectRow = {
-      mode: 'checkbox',
-    
-      clickToExpand: true,
-    
-      onSelect: (row, isSelect, rowIndex, e) => {
-        console.log(row)
-        setDeleteObject([...deleteObject, row])
-      },
-    
+        mode: 'checkbox',
+
+        clickToExpand: true,
+
+        onSelect: (row, isSelect, rowIndex, e) => {
+            console.log(row)
+            setDeleteObject([...deleteObject, row])
+        },
+
         mode: 'checkbox',
         onSelectAll: (isSelect, rows, e) => {
-          console.log(rows)
-          setDeleteObject(rows)
+            console.log(rows)
+            setDeleteObject(rows)
         }
-      };
-    
-    
-      const style = { 
+    };
+
+
+    const style = {
         deleteButton: {
-          color: 'red',
-          width: '4rem'
+            color: 'red',
+            width: '4rem'
         }
-      };
+    };
 
 
     return (
         <div>
-          <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
-          <BootstrapTable key={componentRemount} selectRow={ selectRow }  columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
+            <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
+            <BootstrapTable key={componentRemount} selectRow={selectRow} columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
 
         </div>
     )

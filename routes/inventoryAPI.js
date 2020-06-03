@@ -66,18 +66,18 @@ module.exports = function (app) {
     });
 
 
-    app.put("/api/inventory/", function(req, res) {
+    app.put("/api/inventory/", function (req, res) {
         console.log("UPDATE ROUTE HIT");
         console.log(req.body)
         db.Inventory.update(
             req.body,
             {
-            where: {
-                id: req.body.id
-            }
-          }).then(function(crusine_db) {
-          res.json(crusine_db);
-        });
-      });
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (crusine_db) {
+                res.json(crusine_db);
+            });
+    });
 
 };

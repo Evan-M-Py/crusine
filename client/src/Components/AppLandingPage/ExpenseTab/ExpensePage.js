@@ -83,7 +83,7 @@ function ExpensePage(props) {
     }
 
 
-    //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
     function getKitchenAppliances() {
         return axios.get('/api/barGraph/Kitchen-Appliances/' + props.userID)
@@ -139,11 +139,14 @@ function ExpensePage(props) {
     useEffect(() => {
         doughnutChartAjax()
     },
-        [true]
+        [count]
     )
 
     const [doughnutChart, setdoughnutChart] = useState();
 
+    const handleTableEdit = () => {
+        setCount(count + 1)
+    }
 
 
     return (
@@ -151,7 +154,7 @@ function ExpensePage(props) {
             <Container style={style.container}>
                 <Row>
                     <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
-                    <ExpenseDisplayTable key={count} count={{ setCount, count }} style={style.tableStyle} data={expDisplay} />
+                    <ExpenseDisplayTable key={count} count={{ setCount, count }} style={style.tableStyle} data={expDisplay} handleTableEdit={handleTableEdit} />
                 </Row>
 
                 <Row>
