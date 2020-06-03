@@ -56,6 +56,20 @@ function ExpenseInsert(props) {
         cost: formattedPrice,
     };
 
+    const clearForms = () => {
+        setExpense({
+            expense: ''
+        });
+        setDollars({
+            dollars: ''
+        });
+        setCents({
+            cents: ''
+        });
+        setCategory(categoryOptions[0])
+    };
+
+
     const style = {
         container: {
             justifyContent: 'center'
@@ -97,11 +111,14 @@ function ExpenseInsert(props) {
             </Row>
             <Row>
                 <p style={style.itemLabel}>Cost: $</p>
-                <Input className="form-control px-1" style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6}></Input>
+                <Input className="form-control px-1" style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6} value={dollars.dollars}></Input>
                 <p>.</p>
-                <Input className="form-control px-1" style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2}></Input>
+                <Input className="form-control px-1" style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2} value={cents.cents}></Input>
 
-                <Button className="landing-btn ml-4" size='sm' style={style.button} onClick={() => props.expenseInsertAjax(expObj)}>Submit Item to Inventory</Button>
+                <Button className="landing-btn ml-4" size='sm' style={style.button} onClick={() => {
+                    props.expenseInsertAjax(expObj);
+                    clearForms();
+                }}>Submit Item to Inventory</Button>
             </Row>
         </Container>
     );

@@ -23,7 +23,7 @@ function ExpensePage(props) {
         }
 
         axios.post("/api/expense/create", expObj).then((res) => {
-            setCount(count + 1)
+            setCount(count + 1);
         });
 
 

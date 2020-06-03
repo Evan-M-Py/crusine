@@ -58,6 +58,22 @@ function InventoryInsert(props) {
         price: formattedPrice
     }
 
+    const clearForms = () => {
+        setText({
+            itemName: '',
+            quantity: ''
+        });
+        setDollars({
+            dollars: ''
+        });
+        setCents({
+            cents: ''
+        });
+        setCategory(categoryOptions[0]);
+        setUnit(quantityOptions[0]);
+    }
+
+
 
     const style = {
         container: {
@@ -100,15 +116,18 @@ function InventoryInsert(props) {
             </Row>
             <Row>
                 <p style={style.itemLabel}>Quantity:</p>
-                <Input className="form-control px-1 mb-1" style={style.inputStyle} placeholder='Amount' handleInputChange={(e) => handleInputChange(e)} name='quantity' />
+                <Input className="form-control px-1 mb-1" style={style.inputStyle} placeholder='Amount' handleInputChange={(e) => handleInputChange(e)} name='quantity' value={text.quantity} />
                 <DropdownBase buttonLabel={'select unit'} style={style.dropdownStyle} handleDropdownChange={setUnit} name='unit' value={unit} options={quantityOptions} />
             </Row>
             <Row>
                 <p style={style.itemLabel}>Price: $</p>
-                <Input className="form-control px-1 mb-2" style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6}></Input>
+                <Input className="form-control px-1 mb-2" style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6} value={dollars.dollars}></Input>
                 <p>.</p>
-                <Input className="form-control px-1 mb-2" style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2} ></Input>
-                <Button className="landing-btn mb-2" size='sm' style={style.button} onClick={() => props.inventoryAjaxPost(invObj)}>Submit Item to Inventory</Button>
+                <Input className="form-control px-1 mb-2" style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2} value={cents.cents}></Input>
+                <Button className="landing-btn mb-2" size='sm' style={style.button} onClick={() => {
+                    props.inventoryAjaxPost(invObj);
+                    clearForms();
+                }} >Submit Item to Inventory</Button>
             </Row>
         </Container>
     );
