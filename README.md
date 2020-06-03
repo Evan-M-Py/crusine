@@ -2,11 +2,7 @@
 
 ### A content management system for food trucks!
 
-Deployed: (insert heroku link)
-
-Technologies used: React, MySQL, Chart.js
-
-#### A project created by:
+#### A project created by...
 
 #### Evan Pylar https://github.com/Evan-M-Py | https://www.linkedin.com/in/evan-py/
 
@@ -14,6 +10,9 @@ Technologies used: React, MySQL, Chart.js
 
 #### Ryan Williams https://github.com/Niterich | https://www.linkedin.com/in/ryanwilliams99/
 
+Deployed: (insert heroku link)
+
+Technologies used: React, MySQL, Chart.js
 
 Crusine is an expense and inventory tracking sytem for food truck owners.
 
