@@ -6,11 +6,11 @@ import { Collapse, Button } from 'react-bootstrap';
 const ButtonForInventoryComponents = props => {
     const [open, setOpen] = useState(false);
 
-    const style = {
-        divSpot: {
+    // const style = {
+    //     divSpot: {
 
-        }
-    }
+    //     }
+    // }
 
     return (
         <>

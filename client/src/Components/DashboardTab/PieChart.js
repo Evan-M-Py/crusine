@@ -5,12 +5,12 @@ const PieChart = (props) => {
 
     const pieChartData = {
         labels: [
-            'produce',
-            'bread',
-            'dairy',
-            'meat',
-            'spices',
-            'non-parishable'
+            'Produce',
+            'Bread',
+            'Dairy',
+            'Meat',
+            'Spices',
+            'Non-Parishable'
         ],
         datasets: [
             {

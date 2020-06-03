@@ -4,11 +4,11 @@ import { Bar } from 'react-chartjs-2';
 function BarGraph(props) {
     const barGraphData = {
         labels: [
-            'foh/patio set-up',
-            'misc ',
-            'tools',
-            'kitchen appliances',
-            'vehicle'
+            'FOH',
+            'Misc. ',
+            'Tools',
+            'Kitchen Appliances',
+            'Vehicle'
         ],
         datasets: [
             {

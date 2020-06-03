@@ -24,7 +24,7 @@ function InventoryPage(props) {
             TruckId: Number(props.userID)
         };
 
-        axios.post('/api/inventory/create', invObj).then((res) => setCount(count +1));
+        axios.post('/api/inventory/create', invObj).then((res) => setCount(count + 1));
 
     };
 
@@ -41,13 +41,13 @@ function InventoryPage(props) {
 
     const style = {
         table: {
-            marginLeft:'4rem'
+            marginLeft: '4rem'
         },
-        
+
         tableStyle: {
             width: '100rem'
         },
-        
+
         graphSize: {
             margin: '3px',
             marginTop: '2rem',
@@ -113,11 +113,11 @@ function InventoryPage(props) {
                 setdoughnutChart(totalCostArray);
 
             })
-        )
+            )
     };
 
     const inventoryLabels = [
-        'produce', 'bread', 'dairy', 'meat', 'spices', 'non-parish'
+        'Produce', 'Bread', 'Dairy', 'Meat', 'Spices', 'Non-parish'
     ]
 
     useEffect(() => {
@@ -133,35 +133,35 @@ function InventoryPage(props) {
     }
 
     return (
-    <> 
-        <Container style={style.container}>
-            <Row>
+        <>
+            <Container style={style.container}>
+                <Row>
 
-                <div style={style.table}>
+                    <div style={style.table}>
 
-                    <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
-                    
-                    <InventoryDisplayTable key={count} count={{setCount, count}} style={style.tableStyle} data={invDisplay}  />
-                
-                </div>
+                        <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
+
+                        <InventoryDisplayTable key={count} count={{ setCount, count }} style={style.tableStyle} data={invDisplay} />
+
+                    </div>
 
 
-            </Row>
+                </Row>
 
                 <Row>
 
 
-                        <div className='weDontknowyet' style={style.graphs} >
+                    <div className='weDontknowyet' style={style.graphs} >
                         <   h2 style={style.font}>Expenses Breakdown</h2>
-                            <DoughnutChart Labels={inventoryLabels} DoughnutChartData={doughnutChart} key={count} />
-                        </div>
+                        <DoughnutChart Labels={inventoryLabels} DoughnutChartData={doughnutChart} key={count} />
+                    </div>
 
 
 
                 </Row>
 
-        </Container>
-    </>   
+            </Container>
+        </>
     )
 }
 

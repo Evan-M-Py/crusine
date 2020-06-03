@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-// stateless component
+
 const Title = () => {
     return (
         <div id="titleWrapper" className="text-center mb-4">
@@ -39,7 +39,7 @@ const Form = (props) => {
                 className="form-control col-9"
                 name='todoBody'
                 value={valueState.todoBody}
-                placeholder="Add todos here..."
+                placeholder="Add to-dos here..."
                 autocomplete="off"
                 onChange={(e) => handleChange(e)}
             />
@@ -82,7 +82,7 @@ const List = ({ todos, remove }) => {
     }
     return (
         <div id="list">
-            <p id="info"> Your Todos: </p>
+            <p id="info"> Your To-dos: </p>
             {allTodos}
         </div>
     );
@@ -175,7 +175,7 @@ const ContainerForTodos = (props) => {
     }
 
     return (
-        <div id="container" className="card col-11" style={{background: '#283B63', color: '#F2EFE7'}}>
+        <div id="container" className="card col-11" style={{ background: '#283B63', color: '#F2EFE7' }}>
             <Title />
             <Form addTodo={addTodo} />
             <List todos={state.data} remove={removeTodo} />
