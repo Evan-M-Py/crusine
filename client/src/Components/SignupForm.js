@@ -81,7 +81,7 @@ const SignupPage = (props) => {
                                 <button className="btn landing-btn teal mt-4" onClick={handleSubmit(onSubmit)} type="submit">Submit</button>
                             </Row>
                             <Row className="justify-content-center">
-                                <a className="mt-3 teal" href="/">
+                                <a className="mt-3 teal" href="/" style={{ color: '#B7D4DC' }}>
                                     Already a member? Sign in here
                                     </a>
                             </Row>

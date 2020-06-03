@@ -76,7 +76,7 @@ function LoginPage(props) {
                                         </button>
                                 </Row>
                                 <Row className="justify-content-center">
-                                    <a className="mt-3 teal" href="/signup">
+                                    <a className="mt-3 teal" style={{ color: '#B7D4DC' }} href="/signup">
                                         Not a member yet? Sign up here
                                         </a>
                                 </Row>
