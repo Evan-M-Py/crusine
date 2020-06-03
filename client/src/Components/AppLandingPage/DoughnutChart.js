@@ -4,13 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 function DoughnutChart(props) {
 
     const doughnutChartData = {
-        labels: [
-            'Misc',
-            'FOH/Patio set-up',
-            'Tools',
-            'Kitchen Appliances',
-            'Vehicle'
-        ],
+        labels: props.Labels,
         datasets: [
             {
                 backgroundColor: [

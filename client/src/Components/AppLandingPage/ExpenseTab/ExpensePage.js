@@ -134,7 +134,14 @@ function ExpensePage(props) {
             )
     };
 
-
+    const expenseLabels = [
+        'produce',
+        'bread',
+        'dairy',
+        'meat',
+        'spices',
+        'non-parishable'
+    ]
 
     useEffect(() => {
         doughnutChartAjax()
@@ -160,7 +167,7 @@ function ExpensePage(props) {
                 <Row>
                     <div className='weDontknowyet' style={style.graphs} >
                         <h2 style={style.font}>Expenses Breakdown</h2>
-                        <DoughnutChart DoughnutChartData={doughnutChart} key={count} />
+                        <DoughnutChart Labels={expenseLabels} DoughnutChartData={doughnutChart} key={count} />
                     </div>
                 </Row>
 
