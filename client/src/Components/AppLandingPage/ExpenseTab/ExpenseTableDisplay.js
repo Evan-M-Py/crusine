@@ -26,6 +26,7 @@ const ExpenseTableDisplay = (props) => {
         { dataField: 'category', text: 'Category' },
         { dataField: 'expense', text: 'expense' },
         { dataField: 'price', text: 'Price' },
+
     ]
 
     function customConfirm(next, dropRowKeys) {
@@ -108,6 +109,7 @@ const ExpenseTableDisplay = (props) => {
 
         </div>
     )
+
 };
 
 export default ExpenseTableDisplay;
