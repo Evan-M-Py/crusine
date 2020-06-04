@@ -48,37 +48,28 @@ function ExpensePage(props) {
             width: '50rem'
         },
 
-        graphSize: {
-            margin: '3px',
-            marginTop: '2rem',
-            height: '30rem',
-            width: '85rem',
-            background: 'blue'
-        },
-
-        container: {
-            marginTop: '2rem'
-        },
-
         tableStyle: {
-            width: '50rem'
-        },
-
-        graphSize: {
-            margin: '3px',
-            marginLeft: '2rem',
-            height: '25rem',
-            width: '35rem',
-            background: 'blue'
-        },
-
-        container: {
+            gridColumnStart: '1',
+            gridColumnEnd: '4',
+            gridRowStart: '1',
+            gridRowEnd: '3',
+            margin: '0',
+            marginLeft: '2rem'
+          },
+          
+        invAndExpContainer: {
+            display: 'grid',
+            gridTemplateColumns: '20rem 20rem 20rem 20rem 20rem [end]',
+            gridTemplateRows: '20rem 20rem 20rem 20rem ',
             marginTop: '2rem'
-        },
-        graphs: {
-            marginBottom: '75px',
-            width: '40vw'
-        }
+          },
+          chartStyle: {
+            gridColumnStart: '3',
+            gridColumnEnd: 'end',
+            gridRowStart: '1',
+            gridRowEnd: '3',
+            marginBottom: '4rem'
+          },
 
     }
 
@@ -157,20 +148,15 @@ function ExpensePage(props) {
 
     return (
         <>
-            <Container style={style.container}>
-                <Row>
+            <div style={style.invAndExpContainer}> 
+                <div style={style.tableStyle}>
                     <ButtonForExpenseComponent expenseInsertAjax={expenseInsertAJAX} />
                     <ExpenseDisplayTable key={count} count={{ setCount, count }} style={style.tableStyle} data={expDisplay} handleTableEdit={handleTableEdit} />
-                </Row>
-
-                <Row>
-                    <div className='weDontknowyet' style={style.graphs} >
-                        <h2 style={style.font}>Expenses Breakdown</h2>
-                        <DoughnutChart Labels={expenseLabels} DoughnutChartData={doughnutChart} key={count} />
-                    </div>
-                </Row>
-
-            </Container>
+                </div>
+                <div style={style.chartStyle}>                   
+                    <DoughnutChart Labels={expenseLabels} DoughnutChartData={doughnutChart} key={count} />
+                </div>
+            </div>   
         </>
     )
 };

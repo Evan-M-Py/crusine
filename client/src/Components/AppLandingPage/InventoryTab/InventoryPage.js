@@ -4,7 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import InventoryDisplayTable from './InventoryTableDisplay';
 import axios from "axios";
 import ButtonForInventoryComponents from "./InsertInventoryButton"
-import DoughnutChart from '../DoughnutChart'
+import DoughnutChart from '../DoughnutChart';
+import './inventory.css';
+
+
 
 function InventoryPage(props) {
 
@@ -41,25 +44,33 @@ function InventoryPage(props) {
 
     const style = {
         table: {
-            marginLeft: '4rem'
-        },
 
-        tableStyle: {
             width: '100rem'
         },
+        tableStyle: {
+            gridColumnStart: '1',
+            gridColumnEnd: '4',
+            gridRowStart: '1',
+            gridRowEnd: '3',
+            margin: '0',
+            marginLeft: '2rem'
+          },
+          
+        invAndExpContainer: {
+            display: 'grid',
+            gridTemplateColumns: '20rem 20rem 20rem 20rem 20rem [end]',
+            gridTemplateRows: '20rem 20rem 20rem 20rem ',
+            marginTop: '2rem'
+          },
+          chartStyle: {
+            gridColumnStart: '3',
+            gridColumnEnd: 'end',
+            gridRowStart: '1',
+            gridRowEnd: '3',
+            marginBottom: '4rem'
+          }
 
-        graphSize: {
-            margin: '3px',
-            marginTop: '2rem',
-            height: '30rem',
-            width: '85rem',
-            background: 'blue'
-        },
 
-        container: {
-            marginTop: '2rem',
-            justifyContent: 'center'
-        }
 
     }
 
@@ -132,36 +143,22 @@ function InventoryPage(props) {
         setCount(count + 1)
     }
 
+
+
+
     return (
-        <>
-            <Container style={style.container}>
-                <Row>
+    <div style={style.invAndExpContainer}> 
 
-                    <div style={style.table}>
-
-                        <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
-
-                        <InventoryDisplayTable key={count} count={{ setCount, count }} style={style.tableStyle} data={invDisplay} />
-
-                    </div>
+                <div style={style.tableStyle}>
 
 
-                </Row>
-
-                <Row>
-
-
-                    <div className='weDontknowyet' style={style.graphs} >
-                        <   h2 style={style.font}>Expenses Breakdown</h2>
+                    <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
+                    <InventoryDisplayTable  key={count} count={{setCount, count}}  data={invDisplay}  />
+                </div>
+                <div style={style.chartStyle}>                   
                         <DoughnutChart Labels={inventoryLabels} DoughnutChartData={doughnutChart} key={count} />
-                    </div>
-
-
-
-                </Row>
-
-            </Container>
-        </>
+                </div>
+    </div>   
     )
 }
 
