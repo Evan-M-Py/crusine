@@ -8,6 +8,7 @@ import Axios from 'axios';
 import { Route } from 'react-router-dom';
 import { DBCLICK_TO_CELL_EDIT } from 'react-bootstrap-table2-editor/lib/src/const';
 
+
 const InventoryTableDisplay = (props) => {
 
     const [updateBool, setUpdateBool] = useState(false);

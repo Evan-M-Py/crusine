@@ -24,7 +24,13 @@ const App = (props) => {
     const style = {
         parentDiv: {
             display: "flex",
-            background: '#F2EFE7'
+            background: '#F2EFE7',
+            margin: '0',
+            width: '100vw',
+            height: '100vh'
+        },
+        marginControl: {
+
         }
     };
 
@@ -35,7 +41,7 @@ const App = (props) => {
 
 
     return (
-        <div >
+        <div style={style.marginControl}>
             {location.pathname !== '/signup' && location.pathname !== '/' && <TopNav handleContextChange={handleContextChange} />}
             <UserContext.Provider value={userID}>
                 <Switch>

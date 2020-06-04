@@ -28,9 +28,15 @@ function DoughnutChart(props) {
         ]
     };
 
+    const style = {
+        chart: {
+            height: '50rem',
+            width: '80rem'
+        }
+    }
 
     return (
-        <div className='chart'>
+        <div style={style.chart}>
             <Doughnut data={doughnutChartData} />
         </div>
     );
