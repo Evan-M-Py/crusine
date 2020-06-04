@@ -89,7 +89,9 @@ const InventoryTableDisplay = (props) => {
             // color: 'red',
             // width: '4rem'
         }
+
     };
+
 
     return (
         <div>
