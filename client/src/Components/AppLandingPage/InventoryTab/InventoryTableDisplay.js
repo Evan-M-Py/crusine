@@ -14,7 +14,6 @@ const InventoryTableDisplay = (props) => {
     const [updateBool, setUpdateBool] = useState(false);
     const [componentRemount, setComponentRemount] = useState(0)
 
-
     //===================================================================================================================================================
 
     function deleteHandler(dbObj) {
@@ -28,9 +27,7 @@ const InventoryTableDisplay = (props) => {
         }
     };
 
-
     const [updateTarget, setUpdateTarget] = useState('')
-
 
     const updateAxios = (x) => {
 
@@ -40,16 +37,13 @@ const InventoryTableDisplay = (props) => {
     };
 
     const columns = [
-        { dataField: 'id', text: 'Id' },
-        { dataField: 'category', text: 'Category' },
+        { dataField: 'id', text: 'ID' },
         { dataField: 'itemName', text: 'Item Name' },
+        { dataField: 'category', text: 'Category' },
         { dataField: 'unit', text: 'Unit' },
         { dataField: 'quantity', text: 'Quantity' },
         { dataField: 'price', text: 'Price' },
     ]
-
-
-
 
     const cellEdit = cellEditFactory({
         mode: 'click',
@@ -66,25 +60,23 @@ const InventoryTableDisplay = (props) => {
                     done(false); // reject the changes
                 }
             }, 0);
+
             return { async: true };
-
-
         }
     });
+
     const tableData = [...props.data]
 
     const [deleteObject, setDeleteObject] = useState([]);
 
     const selectRow = {
+
         mode: 'checkbox',
-
         clickToExpand: true,
-
         onSelect: (row, isSelect, rowIndex, e) => {
             console.log(row)
             setDeleteObject([...deleteObject, row])
         },
-
         mode: 'checkbox',
         onSelectAll: (isSelect, rows, e) => {
             console.log(rows)
@@ -92,24 +84,24 @@ const InventoryTableDisplay = (props) => {
         }
     };
 
-
     const style = {
         deleteButton: {
-            color: 'red',
-            width: '4rem'
+            // color: 'red',
+            // width: '4rem'
         }
-    }
+
+    };
 
 
     return (
         <div>
 
-            <button style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>delete</button>
+            <button className="btn btn-danger mb-2" style={style.deleteButton} onClick={() => deleteHandler(deleteObject)}>Delete</button>
 
             <BootstrapTable key={componentRemount} selectRow={selectRow} columns={columns} keyField='id' cellEdit={cellEdit} data={props.data} />
 
         </div>
-    )
-}
+    );
+};
 
 export default InventoryTableDisplay;

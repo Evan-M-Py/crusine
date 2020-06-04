@@ -23,7 +23,7 @@ function ExpensePage(props) {
         }
 
         axios.post("/api/expense/create", expObj).then((res) => {
-            setCount(count + 1)
+            setCount(count + 1);
         });
 
 
@@ -126,12 +126,11 @@ function ExpensePage(props) {
     };
 
     const expenseLabels = [
-        'produce',
-        'bread',
-        'dairy',
-        'meat',
-        'spices',
-        'non-parishable'
+        'Misc.',
+        'FOH',
+        'Tools',
+        'Kitchen-Appliances',
+        'Vehicle',
     ]
 
     useEffect(() => {

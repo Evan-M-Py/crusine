@@ -84,6 +84,15 @@ body {
     background-color: #9379AC;
     border: 1px solid #9379AC;
     color: #F2EFE7;
+    transition: 0.2s ease-in-out;
 }   
-
-
+.landing-btn:hover {
+    color: #F2EFE7;
+    background-color: #7b5d98 !important;
+    border: 1px solid #9379AC;
+}
+.landing-btn:focus {
+    background-color: #7b5d98 !important;
+    border: 1px solid #9379AC;
+    box-shadow: 0 0 0 0.2rem #9379AC;
+}

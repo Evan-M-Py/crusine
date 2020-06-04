@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -68,7 +68,7 @@ const SignupPage = (props) => {
                                 </Col>
                                 <Col>
                                     <label htmlFor='password'>Password:</label>
-                                    <input className="form-control" type="text" name="password" ref={register({ required: true, minLength: 8 })} />
+                                    <input className="form-control" type="password" name="password" ref={register({ required: true, minLength: 8 })} />
                                 </Col>
                             </Row>
                             <Row className="justify-content-center">
@@ -81,7 +81,7 @@ const SignupPage = (props) => {
                                 <button className="btn landing-btn teal mt-4" onClick={handleSubmit(onSubmit)} type="submit">Submit</button>
                             </Row>
                             <Row className="justify-content-center">
-                                <a className="mt-3 teal" href="/">
+                                <a className="mt-3 teal" href="/" style={{ color: '#B7D4DC' }}>
                                     Already a member? Sign in here
                                     </a>
                             </Row>

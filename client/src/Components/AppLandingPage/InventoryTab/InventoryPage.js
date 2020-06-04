@@ -27,7 +27,7 @@ function InventoryPage(props) {
             TruckId: Number(props.userID)
         };
 
-        axios.post('/api/inventory/create', invObj).then((res) => setCount(count +1));
+        axios.post('/api/inventory/create', invObj).then((res) => setCount(count + 1));
 
     };
 
@@ -44,6 +44,7 @@ function InventoryPage(props) {
 
     const style = {
         table: {
+
             width: '100rem'
         },
         tableStyle: {
@@ -123,11 +124,11 @@ function InventoryPage(props) {
                 setdoughnutChart(totalCostArray);
 
             })
-        )
+            )
     };
 
     const inventoryLabels = [
-        'produce', 'bread', 'dairy', 'meat', 'spices', 'non-parish'
+        'Produce', 'Bread', 'Dairy', 'Meat', 'Spices', 'Non-parish'
     ]
 
     useEffect(() => {
@@ -144,11 +145,12 @@ function InventoryPage(props) {
 
 
 
+
     return (
     <div style={style.invAndExpContainer}> 
 
-
                 <div style={style.tableStyle}>
+
 
                     <ButtonForInventoryComponents inventoryAJAXPost={inventoryInsertAJAX} />
                     <InventoryDisplayTable  key={count} count={{setCount, count}}  data={invDisplay}  />

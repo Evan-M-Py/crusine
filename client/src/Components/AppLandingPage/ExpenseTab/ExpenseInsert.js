@@ -56,6 +56,20 @@ function ExpenseInsert(props) {
         cost: formattedPrice,
     };
 
+    const clearForms = () => {
+        setExpense({
+            expense: ''
+        });
+        setDollars({
+            dollars: ''
+        });
+        setCents({
+            cents: ''
+        });
+        setCategory(categoryOptions[0])
+    };
+
+
     const style = {
         container: {
             justifyContent: 'center'
@@ -92,16 +106,19 @@ function ExpenseInsert(props) {
         <Container style={style.container}>
             <Row>
                 <p style={style.itemLabel}>Expense:</p>
-                <Input style={style.inputStyle} placeholder='enter expense name' inputLabel='Item Name' handleInputChange={handleInputChange} name='expense' value={expense.expense} />
-                <DropdownBase buttonLabel={'select expense category'} style={style.dropdownStyle} handleDropdownChange={setCategory} name='category' value={category} options={categoryOptions} />
+                <Input className="form-control mb-2 px-1" style={style.inputStyle} placeholder='Name' inputLabel='Item Name' handleInputChange={handleInputChange} name='expense' value={expense.expense} />
+                <DropdownBase className="ml-2" buttonLabel={'select expense category'} style={style.dropdownStyle} handleDropdownChange={setCategory} name='category' value={category} options={categoryOptions} />
             </Row>
             <Row>
                 <p style={style.itemLabel}>Cost: $</p>
-                <Input style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6}></Input>
+                <Input className="form-control px-1" style={style.inputCostStyle} placeholder='0000' handleInputChange={(e) => handleInputChange(e)} name='dollarPrice' maxLength={6} value={dollars.dollars}></Input>
                 <p>.</p>
-                <Input style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2}></Input>
+                <Input className="form-control px-1" style={style.inputCostStyle} placeholder='00' handleInputChange={(e) => handleInputChange(e)} name='centPrice' maxLength={2} value={cents.cents}></Input>
 
-                <Button variant='primary' size='sm' style={style.button} onClick={() => props.expenseInsertAjax(expObj)}>Submit Item to Inventory</Button>
+                <Button className="landing-btn ml-4" size='sm' style={style.button} onClick={() => {
+                    props.expenseInsertAjax(expObj);
+                    clearForms();
+                }}>Submit Item to Inventory</Button>
             </Row>
         </Container>
     );

@@ -21,26 +21,11 @@ module.exports = function (app) {
             }
         }).then(function (crusine_db) {
             // returns a JSON object with table contents?????
-
             res.json(crusine_db);
         });
     });
 
-    // // PUT route for UPDATING not using parameters
-    // app.put("/api/inventory", function (req, res) {
-    //     console.log("UPDATE ROUTE HIT");
-    //     db.Post.update(
-    //         req.body,
-    //         {
-    //             where: {
-    //                 id: req.body.id
-    //             }
-    //         }).then(function (crusine_db) {
-    //             res.json(crusine_db);
-    //         });
-    // });
 
-    // PUT route for UPDATING using parameters
     app.put("/api/inventory/:id", function (req, res) {
         console.log("UPDATE ROUTE HIT");
         db.Post.update({

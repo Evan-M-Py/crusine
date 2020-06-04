@@ -1,14 +1,14 @@
 import React from "react";
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 function BarGraph(props) {
     const barGraphData = {
         labels: [
-            'foh/patio set-up',
-            'misc ',
-            'tools',
-            'kitchen appliances',
-            'vehicle'
+            'FOH',
+            'Misc. ',
+            'Tools',
+            'Kitchen Appliances',
+            'Vehicle'
         ],
         datasets: [
             {
@@ -43,12 +43,12 @@ function BarGraph(props) {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true,
-                    // min: 0
+                    beginAtZero: true
                 }
             }]
         }
-    }
+    };
+
     return (
         <div className='chart'>
             <Bar
