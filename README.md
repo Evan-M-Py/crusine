@@ -10,7 +10,7 @@
 
 #### Ryan Williams https://github.com/Niterich | https://www.linkedin.com/in/ryanwilliams99/
 
-Deployed: (insert heroku link)
+Check out the deployed site [HERE](https://crusine.herokuapp.com/)!
 
 Technologies used: React, MySQL, Chart.js
 
